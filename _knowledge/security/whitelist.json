@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-12T00:00:00Z",
+  "global_patterns": {
+    "public_identifiers": [
+      { "pattern": "GTM-[A-Z0-9]{7}", "description": "Google Tag Manager Container ID" },
+      { "pattern": "G-[A-Z0-9]{10}", "description": "Google Analytics 4" },
+      { "pattern": "^NEXT_PUBLIC_[A-Z_]+$", "description": "Next.js Public Env Var" }
+    ]
+  },
+  "learned_patterns": [],
+  "context_rules": {
+    "safe_files": [".env.example", "*.test.ts", "*.md", "README.md"]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "uplex-academy-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "_projetos/uplex-academy-web", "--", "-p", "3005"],
+      "port": 3005
+    }
+  ]
+}
