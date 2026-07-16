@@ -1,6 +1,17 @@
 ---
-name: "memory-keeper"
-description: "Kernel de Governança e Memória: Consolida e atualiza a base de conhecimento (Company/Clients) do UplexOS após cada sessão. Garante que nenhuma decisão ou contexto seja perdido entre interações."
+name: memory-keeper
+version: 1.1.0
+description: Consolida fatos, preferências e decisões confirmadas com proveniência e escopo, evitando contaminação entre projetos.
+risk_level: high
+mode: assisted
+read_scope: [project.context, knowledge.company, knowledge.clients]
+write_scope: [project.context, knowledge.company, knowledge.clients]
+required_inputs: [project_id]
+outputs: [memory_change_report]
+external_actions: []
+requires_approval: [write_global_knowledge, replace_existing_rule]
+aliases: [memory]
+status: active
 ---
 
 # 🧠 MUTAÇÃO 20: MEMORY ENGINE (O KERNEL DE GOVERNANÇA)
@@ -25,7 +36,7 @@ O processo de consolidação de memória consiste em três varreduras obrigatór
 
 ### 2. VARREDURA DE MEMÓRIA DA EMPRESA (Global: `_knowledge/company/`)
 1. **Regras e Preferências**: O usuário expressou alguma nova preferência? (Ex: "Prefiro componentes de função com arrow functions", "Use Tailwind em vez de CSS modules").
-2. **Atualização**: Modifique os arquivos em `_knowledge/company/` para refletir os novos padrões globais de código, tom de voz ou fluxos de trabalho.
+2. **Atualização**: proponha alterações globais em `_knowledge/company/` e solicite confirmação explícita antes de gravar. Uma preferência de projeto ou cliente nunca deve virar regra global por inferência.
 
 ### 3. VARREDURA DE CONHECIMENTO DO CLIENTE/PROJETO (Específico: `_knowledge/clients/`)
 1. **Regras de Negócio**: A empresa do cliente mudou de escopo? Novas regras de faturamento foram criadas?
@@ -48,6 +59,9 @@ Após executar as atualizações silenciamente, forneça um relatório executivo
 ```
 
 ## REGRAS DE OURO DA MEMÓRIA
-1. **Seja aditivo, não destrutivo**: Nunca sobrescreva diretrizes importantes sem ter certeza absoluta de que foram revogadas. Em caso de conflito, adicione uma observação ("Regra X modificada em [Data] para Y devido a Z").
-2. **Evite Ruído**: Não documente tentativas falhas de correção de bugs menores ("Tentei mudar padding de 4 pra 5"). Documente resoluções arquiteturais ("O CORS da API estava falhando porque o Next.js sobrescrevia os headers. Resolvido configurando o `next.config.js`").
-3. **Consolide e Simplifique**: Se arquivos de conhecimento ficarem muito longos, resuma-os.
+1. **Seja aditivo, não destrutivo**: nunca sobrescreva diretrizes sem revogação confirmada. Preserve histórico com `supersedes`.
+2. **Evite ruído**: registre decisões duráveis, não tentativas transitórias.
+3. **Não misture escopos**: empresa, cliente e projeto são domínios isolados.
+4. **Registre proveniência**: cada memória deve conter ID, tipo (`fact`, `preference`, `decision`, `assumption` ou `constraint`), escopo, fonte, confiança, data e relação de substituição.
+5. **Diferencie confirmação de inferência**: inferências permanecem como `assumption` e não governam execução até serem confirmadas.
+6. **Mostre o diff**: mudanças globais ou substituições de regras exigem aprovação e relatório do conteúdo alterado.

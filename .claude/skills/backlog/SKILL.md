@@ -11,9 +11,9 @@ Mostra todas as tasks do projeto.
 
 ## Fluxo
 
-### 1. Ler tasks.json
+### 1. Resolver projeto e ler tasks
 
-Ler `estado/tasks.json` para obter lista completa de tasks.
+Determine o projeto ativo sem ambiguidade e leia `_projetos/<projeto>/contexto/tasks.json`. Para compatibilidade temporária, o arquivo raiz `contexto/tasks.json` pode ser lido apenas quando o projeto declarado nele corresponder ao projeto solicitado. Valide o formato com `.claude/schemas/tasks.schema.json`; se estiver no formato legado, informe a limitação sem reescrever em uma operação de leitura.
 
 ### 2. Gerar output
 
@@ -62,6 +62,8 @@ Se usuário quiser filtrar:
 
 - Agrupar por status: validadas, em progresso, backlog
 - Dentro do backlog, separar por fase
-- Mostrar prioridade com cores (🔴🟡🟢)
-- Destacar task em progresso
-- Oferecer ações rápidas
+- Mostrar prioridade textualmente; ícones são opcionais e não podem ser a única indicação.
+- Destacar task em progresso.
+- Não inventar percentual, fase, data ou evidência ausente.
+- Uma task só é `validated` quando seus critérios de aceite apontam evidências verificáveis.
+- Oferecer ações rápidas sem modificar o backlog durante a consulta.

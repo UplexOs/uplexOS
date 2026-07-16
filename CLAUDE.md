@@ -26,7 +26,7 @@ Antes de executar qualquer tarefa, acione o funcionário responsável pela deman
 - Segurança: `security-engineer`
 - Copy e Conteúdo: `copywriter`
 - Otimização de Busca: `seo-specialist`
-- Infraestrutura: `devops-engineer`
+- Infraestrutura e Deploy: `deploy` (alias legado: `devops-engineer`)
 
 ## 2. Validação de Ambiente (Ops)
 Se um novo projeto iniciar, o `devops-engineer` ou o script raiz deve checar a máquina local.
@@ -36,23 +36,31 @@ docker --version
 git --version
 ```
 
-## 3. Estado do Projeto (Timeline)
-O coração da experiência é a **Timeline**. Toda ação deve ser narrada no terminal no formato:
-`[HH:MM] 👤 <Cargo>: Mensagem corporativa.`
-Sempre atualize `contexto/estado.json` e `contexto/tasks.json` silenciosamente.
+## 3. Estado do Projeto e evidências
+O coração da experiência é a **Timeline**. Registre ações relevantes com cargo, timestamp, projeto, task, resultado e evidência. Use os schemas em `.claude/schemas/` para novos estados e tasks.
 
-## 4. Controle de Versão Automático
-O UplexOS versiona o código sem pedir permissão após entregas validadas.
-O `git-operator` (antigo salvar) é acionado para realizar:
-1. `git add .`
-2. `git commit -m "feat: [descrição corporativa]"`
-3. `git push`
+- Não altere estado em operações declaradas como somente leitura.
+- Não marque uma etapa como concluída sem evidência verificável.
+- Resultados técnicos usam: `passed`, `failed`, `not_run`, `not_applicable`, `blocked` ou `requires_approval`.
+- Arquivos ausentes ou ferramentas indisponíveis resultam em `not_run` ou `blocked`, nunca em aprovação presumida.
 
-## 5. Handoff Contínuo (Workflow)
-Nunca gere código direto. O fluxo de vida (Workflow) de um produto na Uplex é:
-`product-manager` → `software-architect` (Documentação) → `copywriter` (Texto) → `ui-designer` (Design) → `marketing-designer` (Criativos) → `frontend-engineer` (Interface) → `database-engineer` (Tabelas) → `backend-engineer` (API) → `auth-specialist` (Login) → `billing-engineer` (Pagamento) → `data-engineer` (Analytics) → `security-engineer` (Auditoria) → `qa-engineer` (Testes) → `seo-specialist` (Busca) → `devops-engineer` (Deploy).
+## 4. Autonomia e controle de versão
+O modo padrão é **assistido**. Obedeça `.claude/policies/autonomy.md`, `.claude/policies/approvals.md` e `.claude/policies/evidence.md`.
 
-O sistema não pode pular a etapa de Qualidade e Segurança.
+- Commits locais devem conter apenas arquivos do escopo aprovado.
+- `git push`, deploy, migração, exclusão, instalação, cobrança, telemetria e ações externas exigem aprovação específica.
+- Mudanças preexistentes do usuário nunca devem ser incluídas, revertidas ou sobrescritas sem autorização.
+
+## 5. Roteamento e Handoff Contínuo
+Selecione o menor workflow capaz de atender ao pedido conforme escopo, risco e Tier; não invoque departamentos sem necessidade.
+
+Exemplos:
+- Correção pequena: triagem → especialista → QA focal → segurança focal quando aplicável.
+- Feature com autenticação: produto/arquitetura → backend/auth → frontend → QA → segurança.
+- Landing page: produto/copy/design → frontend → SEO → QA → deploy.
+- Enterprise: arquitetura e threat model precedem implementação; QA, segurança e compliance são gates obrigatórios.
+
+Qualidade e segurança não podem ser omitidas quando aplicáveis, mas verificações fora do escopo devem ser registradas como `not_applicable` com justificativa.
 
 ## Comandos do Usuário (Interface CLI)
 Embora os agentes tenham sido reestruturados internamente como cargos, caso o usuário utilize os comandos raiz, mapeie a execução para o líder do departamento:

@@ -1,5 +1,17 @@
 ---
-description: Responsável por métricas de crescimento, SEO avançado, viralidade, A/B testing e integração de campanhas. Atua como Hacker de Crescimento do UplexOS.
+name: growth-operator
+version: 1.0.0
+description: Analisa e implementa melhorias mensuráveis de aquisição, conversão e retenção no escopo aprovado.
+risk_level: high
+mode: assisted
+read_scope: [project.context, project.code, project.marketing]
+write_scope: [project.code, project.reports.growth]
+required_inputs: [project_id, objective]
+outputs: [growth_plan, experiment_report]
+external_actions: []
+requires_approval: [enable_tracking, start_experiment, external_campaign, paid_api]
+aliases: [growth]
+status: active
 ---
 
 # Funcionalidade do Operador de Crescimento

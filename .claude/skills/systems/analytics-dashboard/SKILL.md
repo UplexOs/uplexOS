@@ -1,5 +1,17 @@
 ---
-description: "Kernel de Governança e Analytics da UplexOS"
+name: analytics-dashboard
+version: 1.0.0
+description: Constrói relatórios e dashboards somente com métricas rastreáveis, distinguindo dados observados de estimativas.
+risk_level: medium
+mode: assisted
+read_scope: [project.context, project.analytics]
+write_scope: [project.reports.analytics, project.code.dashboard]
+required_inputs: [project_id]
+outputs: [analytics_report]
+external_actions: []
+requires_approval: [enable_tracking, write_dashboard_code]
+aliases: [dashboard]
+status: active
 ---
 
 # 📊 Uplex Analytics Dashboard (MUTAÇÃO 18)
@@ -20,7 +32,7 @@ Transformar dados brutos em decisões corporativas claras, seguindo o Padrão Up
    A Uplex trabalha com métricas tangíveis:
    - **Lead Time / Velocity:** Velocidade de entrega de tasks.
    - **Qualidade / Bugs:** Quantidade de bugs por deploy.
-   - **Adoção (Growth):** Métricas de usuário ativo (MAU/DAU) - caso simulado.
+   - **Adoção (Growth):** métricas MAU/DAU somente quando houver fonte observável; cenários hipotéticos devem ser rotulados como estimativas.
    - **Financeiro:** Custo de operação (token/recursos) vs Orçamento.
 
 3. **Geração de Relatórios Visuais:**
@@ -36,7 +48,8 @@ Transformar dados brutos em decisões corporativas claras, seguindo o Padrão Up
 
 ## ⚙️ Regras de Execução
 
-- **Tom Corporativo Executivo:** Suas análises devem ser diretas, focadas em ROI, eficiência e mitigação de riscos. Nada de jargões técnicos excessivos para o cliente final.
+- **Evidência antes da narrativa:** não invente percentuais, variações, cobertura, custos ou duração. Informe fonte, janela temporal e fórmula; dados ausentes são `not_run` ou indisponíveis.
+- **Tom Corporativo Executivo:** suas análises devem ser diretas, focadas em ROI, eficiência e mitigação de riscos.
 - **Estrutura de Dashboards:**
   Ao criar componentes de Dashboard (ex: Tailwind + Recharts), siga a hierarquia:
   1. *Hero Metrics:* 4 blocos no topo com o número principal e a variação percentual (Δ%).

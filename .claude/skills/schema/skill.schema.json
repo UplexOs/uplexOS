@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/skill.schema.json",
+  "title": "UplexOS Skill Contract",
+  "type": "object",
+  "required": ["name", "description"],
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "default": "1.0.0" },
+    "description": { "type": "string", "minLength": 20 },
+    "risk_level": { "enum": ["low", "medium", "high", "critical"], "default": "medium" },
+    "mode": { "enum": ["read-only", "consultative", "assisted", "automatic"], "default": "assisted" },
+    "read_scope": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "write_scope": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "required_inputs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "outputs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "external_actions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "requires_approval": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "aliases": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "status": { "enum": ["active", "deprecated", "experimental"], "default": "active" }
+  },
+  "additionalProperties": true
+}
