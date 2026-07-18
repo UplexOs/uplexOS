@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "source": ".claude/skills/**/SKILL.md",
+  "shared_contracts": {
+    "mandatory": [
+      ".claude/skills/_shared/execution-protocol.md",
+      ".claude/skills/_shared/evidence-standard.md",
+      ".claude/skills/_shared/approval-model.md",
+      ".claude/skills/_shared/handoff-contract.md",
+      ".claude/skills/_shared/language-policy.md"
+    ],
+    "conditional": {
+      "external_actions": ".claude/skills/_shared/external-services.md",
+      "security_relevant": ".claude/skills/_shared/security-baseline.md",
+      "task_management": ".claude/skills/_shared/task-contract.md",
+      "media_generation": ".claude/skills/_shared/media-generation.md"
+    },
+    "precedence": "Global policies and shared contracts take precedence over conflicting instructions in any skill body."
+  },
+  "category_contracts": {
+    "orchestrator": {
+      "rules": ["Não executar trabalho especializado quando houver skill responsável.", "Separar fatos confirmados de hipóteses.", "Exigir escopo e critérios de aceite antes do handoff."]
+    },
+    "specialist": {
+      "rules": ["Executar somente o escopo aprovado.", "Preservar padrões e mudanças existentes.", "Verificar resultados com ferramentas disponíveis."]
+    },
+    "gate": {
+      "rules": ["Decidir com base em evidência e política, não em autoridade de persona.", "Usar estados pass, conditional_pass, fail ou blocked.", "Não aprovar a própria exceção."]
+    },
+    "operations": {
+      "rules": ["Preservar rastreabilidade e estado consistente.", "Ações remotas, destrutivas ou irreversíveis exigem aprovação específica."]
+    },
+    "marketing": {
+      "rules": ["Confirmar briefing, direitos de uso e canal.", "Distinguir artefato preparado de mídia efetivamente gerada.", "Aplicar o contrato de mídia quando houver geração."]
+    },
+    "growth": {
+      "rules": ["Definir hipótese, métrica primária, guardrails e critério de parada.", "Não confundir correlação com causalidade.", "Tracking novo exige consentimento e aprovação aplicáveis."]
+    },
+    "design": {
+      "rules": ["Derivar direção visual do briefing e design system aprovados.", "Não impor estética universal.", "Validar acessibilidade e estados de interação."]
+    },
+    "system": {
+      "rules": ["Manter proveniência e isolamento entre projetos.", "Não registrar inferência como fato.", "Toda métrica deve declarar fonte, fórmula, período e limitações."]
+    },
+    "workflow": {
+      "rules": ["Executar somente os formatos solicitados.", "Carregar referências detalhadas sob demanda.", "Registrar artefatos e verificações produzidos."]
+    }
+  },
+  "skill_overrides": {
+    "ai-engineer": ["Limitar-se à integração de modelos na aplicação; encaminhar RAG, embeddings, fine-tuning e avaliações avançadas para ai-ml-engineer."],
+    "ai-ml-engineer": ["Assumir RAG, embeddings, agentes, fine-tuning e avaliação; registrar dataset, modelo, configuração, custo e limitações."],
+    "analytics-dashboard": ["Classificar números como observed, derived, estimated ou unavailable."],
+    "auth-specialist": ["Respeitar o provedor existente e entregar matriz de autorização e testes negativos de acesso."],
+    "backend-engineer": ["Cobrir validação, autorização, idempotência, transações, paginação, erros e observabilidade quando aplicáveis."],
+    "billing-engineer": ["Separar sandbox, test mode e produção; exigir aprovação para produtos, preços, cobrança, webhook e produção."],
+    "compliance-packager": ["Entregas são modelos e não aconselhamento jurídico; não inventar base legal, retenção ou subprocessadores."],
+    "configurar-apis": ["Nunca exibir secrets; teste pago ou com alteração externa exige aprovação."],
+    "copywriter": ["Não inventar depoimentos, resultados ou alegações; adequar extensão ao canal."],
+    "database-engineer": ["Separar modelagem de migração; mudança destrutiva exige plano de rollback e aprovação específica."],
+    "data-engineer": ["Manter catálogo de eventos com finalidade, origem, owner e validação; consentimento e retenção devem ser explícitos."],
+    "deploy": ["Separar preparação, dry run, staging e produção; produção exige aprovação imediata, rollback e health check."],
+    "design-system": ["Produzir tokens semânticos, estados, contraste e componentes antes da implementação; não inventar marca."],
+    "frontend-design": ["Não impor estética Apple, Linear ou qualquer estilo sem briefing aprovado."],
+    "frontend-engineer": ["Componentes cinematográficos são opcionais e só se tornam obrigatórios quando presentes no design system aprovado."],
+    "git-operator": ["Push sempre exige aprovação específica; proibir force push sem aprovação excepcional; registrar hash do commit."],
+    "growth-hacker": ["Desenhar experimentos e infraestrutura; não executar tracking ou produção sem aprovação."],
+    "growth-operator": ["Executar e acompanhar somente experimentos aprovados."],
+    "internationalization": ["Cobrir pluralização, formatos locais, fallback, RTL, SEO multilíngue e strings hardcoded quando aplicáveis."],
+    "marketing": ["Atuar como roteador de objetivo, público, canal, oferta, funil, ativos e métricas."],
+    "memory-keeper": ["Registrar proveniência, escopo, fonte, confirmação, confiança, validade e substituição; impedir contaminação entre clientes."],
+    "mobile-engineer": ["Distinguir Expo de bare, validar permissões, armazenamento seguro, offline e plataformas realmente testadas."],
+    "onboarding": ["Preparar cliente ou organização; não confundir com instalar, que configura a própria empresa no UplexOS."],
+    "product-manager": ["Não escolher stack; separar requisitos confirmados de hipóteses e obter aprovação do escopo antes da arquitetura."],
+    "qa-engineer": ["Mapear critério para teste e evidência; ferramenta ausente é not_run; distinguir falha do produto de falha do ambiente."],
+    "scrum-master": ["Reportar apenas estado observado; percentual exige fórmula documentada."],
+    "security-engineer": ["Revisão proporcional ao risco; remover autoridade absoluta e exigências universais; achados exigem evidência, cenário, impacto e mitigação."],
+    "seo-specialist": ["Não prometer indexação ou ranking; distinguir implementação de resultado medido."],
+    "software-architect": ["Inspecionar o repositório antes de propor arquitetura; registrar alternativas e decisões em ADRs quando aplicável."],
+    "tech-lead": ["Decompor trabalho, dependências e conflitos; status corporativo pertence ao scrum-master."],
+    "user-simulator": ["Identificar toda saída como simulação heurística, nunca pesquisa real com usuários."],
+    "uplex-help": ["Somente leitura."],
+    "uplex-status": ["Somente leitura e evidência observada."],
+    "uplex-start": ["Alterar estado somente após confirmação humana."]
+  },
+  "defaults": {
+    "version": "1.0.0",
+    "instruction_language": "en",
+    "default_output_locale": "pt-BR",
+    "description": "UplexOS operational skill with a contract inherited from the registry.",
+    "mode": "assisted",
+    "risk_level": "medium",
+    "read_scope": ["project.context", "knowledge.company"],
+    "write_scope": ["project.context"],
+    "required_inputs": ["project_id"],
+    "outputs": ["execution_report"],
+    "contracts": ["mandatory", "category", "skill_override"],
+    "evidence_states": ["observed", "inferred", "estimated", "not_run", "blocked", "failed"],
+    "external_actions": [],
+    "requires_approval": [],
+    "aliases": [],
+    "status": "active"
+  },
+  "legacy_files": [
+    ".claude/skills/billing-engineer.md",
+    ".claude/skills/c-level/ceo.md",
+    ".claude/skills/c-level/cto.md",
+    ".claude/skills/c-level/executive-committee.md",
+    ".claude/skills/c-level/legal-engineer.md",
+    ".claude/skills/data-engineer.md",
+    ".claude/skills/directors/creative-director.md",
+    ".claude/skills/frontend-engineer.md",
+    ".claude/skills/marketing-designer.md",
+    ".claude/skills/software-architect.md",
+    ".claude/skills/specialists/frontend-engineer.md",
+    ".claude/skills/ui-designer.md",
+    ".claude/skills/vendedor.md"
+  ],
+  "canonical_aliases": {
+    "devops-engineer": "deploy",
+    "dba": "database-engineer",
+    "frontend": "frontend-engineer",
+    "ui-designer": "frontend-design",
+    "engineering-manager": "scrum-master",
+    "backend-lead": "tech-lead"
+  },
+  "skills": [
+    { "id": "agent-analytics", "path": ".claude/skills/systems/agent-analytics/SKILL.md", "category": "system" },
+    { "id": "ai-engineer", "path": ".claude/skills/ai-engineer/SKILL.md", "category": "specialist" },
+    { "id": "ai-ml-engineer", "path": ".claude/skills/specialists/ai-ml-engineer/SKILL.md", "category": "specialist" },
+    { "id": "analytics-dashboard", "path": ".claude/skills/systems/analytics-dashboard/SKILL.md", "category": "system" },
+    { "id": "apresentacao", "path": ".claude/skills/apresentacao/SKILL.md", "category": "workflow" },
+    { "id": "audio", "path": ".claude/skills/audio/SKILL.md", "category": "marketing" },
+    { "id": "auth-specialist", "path": ".claude/skills/specialists/auth-specialist/SKILL.md", "category": "specialist" },
+    { "id": "backend-engineer", "path": ".claude/skills/specialists/backend-engineer/SKILL.md", "category": "specialist" },
+    { "id": "backlog", "path": ".claude/skills/backlog/SKILL.md", "category": "operations" },
+    { "id": "billing-engineer", "path": ".claude/skills/specialists/billing-engineer/SKILL.md", "category": "specialist" },
+    { "id": "canvas", "path": ".claude/skills/canvas/SKILL.md", "category": "marketing" },
+    { "id": "compliance-packager", "path": ".claude/skills/specialists/compliance-packager/SKILL.md", "category": "specialist" },
+    { "id": "configurar-apis", "path": ".claude/skills/configurar-apis/SKILL.md", "category": "operations" },
+    { "id": "copywriter", "path": ".claude/skills/specialists/copywriter/SKILL.md", "category": "specialist" },
+    { "id": "customer-success", "path": ".claude/skills/specialists/customer-success/SKILL.md", "category": "specialist" },
+    { "id": "database-engineer", "path": ".claude/skills/specialists/dba/SKILL.md", "category": "specialist" },
+    { "id": "data-engineer", "path": ".claude/skills/specialists/data-engineer/SKILL.md", "category": "specialist" },
+    { "id": "deploy", "path": ".claude/skills/specialists/devops-engineer/SKILL.md", "category": "gate" },
+    { "id": "design-system", "path": ".claude/skills/design-system/SKILL.md", "category": "design" },
+    { "id": "frontend-design", "path": ".claude/skills/directors/creative-director/SKILL.md", "category": "design" },
+    { "id": "frontend-engineer", "path": ".claude/skills/specialists/frontend-engineer/SKILL.md", "category": "specialist" },
+    { "id": "gerar-imagens", "path": ".claude/skills/gerar-imagens/SKILL.md", "category": "marketing" },
+    { "id": "git-operator", "path": ".claude/skills/specialists/git-operator/SKILL.md", "category": "operations" },
+    { "id": "growth-hacker", "path": ".claude/skills/growth-hacker/SKILL.md", "category": "growth" },
+    { "id": "growth-operator", "path": ".claude/skills/specialists/growth-operator/SKILL.md", "category": "growth" },
+    { "id": "internationalization", "path": ".claude/skills/systems/internationalization/SKILL.md", "category": "system" },
+    { "id": "instalar", "path": ".claude/skills/instalar/SKILL.md", "category": "operations" },
+    { "id": "marketing", "path": ".claude/skills/marketing/SKILL.md", "category": "marketing" },
+    { "id": "marketing-designer", "path": ".claude/skills/marketing-designer/SKILL.md", "category": "marketing" },
+    { "id": "memory-keeper", "path": ".claude/skills/systems/memory-keeper/SKILL.md", "category": "system" },
+    { "id": "mobile-engineer", "path": ".claude/skills/specialists/mobile-engineer/SKILL.md", "category": "specialist" },
+    { "id": "nova-task", "path": ".claude/skills/nova-task/SKILL.md", "category": "operations" },
+    { "id": "onboarding", "path": ".claude/skills/specialists/onboarding/SKILL.md", "category": "operations" },
+    { "id": "product-manager", "path": ".claude/skills/c-level/cpo/SKILL.md", "category": "orchestrator" },
+    { "id": "proximatask", "path": ".claude/skills/proximatask/SKILL.md", "category": "operations" },
+    { "id": "qa-engineer", "path": ".claude/skills/specialists/qa-engineer/SKILL.md", "category": "gate" },
+    { "id": "reels", "path": ".claude/skills/reels/SKILL.md", "category": "marketing" },
+    { "id": "scrum-master", "path": ".claude/skills/directors/engineering-manager/SKILL.md", "category": "orchestrator" },
+    { "id": "security-engineer", "path": ".claude/skills/specialists/security-engineer/SKILL.md", "category": "gate" },
+    { "id": "seo-specialist", "path": ".claude/skills/specialists/seo-specialist/SKILL.md", "category": "specialist" },
+    { "id": "software-architect", "path": ".claude/skills/c-level/cto/SKILL.md", "category": "orchestrator" },
+    { "id": "story", "path": ".claude/skills/story/SKILL.md", "category": "marketing" },
+    { "id": "tech-lead", "path": ".claude/skills/leads/backend-lead/SKILL.md", "category": "orchestrator" },
+    { "id": "uplex-help", "path": ".claude/skills/uplex-help/SKILL.md", "category": "operations" },
+    { "id": "uplex-start", "path": ".claude/skills/uplex-start/SKILL.md", "category": "operations" },
+    { "id": "uplex-status", "path": ".claude/skills/uplex-status/SKILL.md", "category": "operations" },
+    { "id": "user-simulator", "path": ".claude/skills/specialists/user-simulator/SKILL.md", "category": "specialist" },
+    { "id": "video", "path": ".claude/skills/video/SKILL.md", "category": "marketing" }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/tasks.schema.json",
+  "title": "UplexOS Task Collection",
+  "type": "object",
+  "required": ["schema_version", "project_id", "tasks"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "priority", "acceptance_criteria"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^TASK-[0-9]{3,}$" },
+          "title": { "type": "string", "minLength": 3 },
+          "description": { "type": "string" },
+          "status": { "enum": ["backlog", "in_progress", "blocked", "in_review", "validated", "cancelled"] },
+          "priority": { "enum": ["low", "medium", "high", "critical"] },
+          "phase": { "type": "string" },
+          "assignee": { "type": ["string", "null"] },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "acceptance_criteria": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "blocked_reason": { "type": ["string", "null"] },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

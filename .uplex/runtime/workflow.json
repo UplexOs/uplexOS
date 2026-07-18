@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "initial_phase": "onboarding",
+  "phases": {
+    "onboarding": {
+      "label": "Onboarding",
+      "skill": "onboarding",
+      "next": "architecture",
+      "gate": null
+    },
+    "architecture": {
+      "label": "Arquitetura",
+      "skill": "software-architect",
+      "next": "design",
+      "gate": null
+    },
+    "design": {
+      "label": "Design e narrativa",
+      "skill": "frontend-design",
+      "next": "engineering",
+      "gate": null
+    },
+    "engineering": {
+      "label": "Engenharia",
+      "skill": "scrum-master",
+      "next": "quality",
+      "gate": null
+    },
+    "quality": {
+      "label": "Qualidade",
+      "skill": "qa-engineer",
+      "next": "security",
+      "gate": "quality_gate"
+    },
+    "security": {
+      "label": "Segurança",
+      "skill": "security-engineer",
+      "next": "delivery",
+      "gate": "security_gate"
+    },
+    "delivery": {
+      "label": "Entrega",
+      "skill": "deploy",
+      "next": "completed",
+      "gate": null,
+      "requires_approval": true
+    },
+    "completed": {
+      "label": "Concluído",
+      "skill": null,
+      "next": null,
+      "gate": null
+    }
+  },
+  "legacy_phase_aliases": {
+    "onboarding_concluido": "architecture",
+    "planejamento_arquitetural": "architecture",
+    "arquitetura_aprovada": "design",
+    "design_aprovado": "engineering",
+    "frontend_concluido": "quality",
+    "auditoria_concluida": "delivery"
+  }
+}

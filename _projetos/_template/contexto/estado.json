@@ -1,0 +1,50 @@
+{
+  "projeto": "",
+  "slug": "",
+  "criado_em": "",
+  "ultima_atualizacao": "",
+  "fase": "planejando",
+  "status": "ativo",
+  "progresso": {
+    "total_tasks": 0,
+    "validadas": 0,
+    "em_andamento": 0,
+    "backlog": 0,
+    "percentual": 0
+  },
+  "stack": {
+    "frontend": {
+      "framework": "nextjs",
+      "versao": "14",
+      "typescript": true,
+      "libs": []
+    },
+    "backend": {
+      "framework": "nestjs",
+      "versao": "10",
+      "typescript": true,
+      "libs": []
+    },
+    "database": {
+      "engine": "postgresql",
+      "versao": "15",
+      "orm": "prisma"
+    }
+  },
+  "marketing": {
+    "tem_marketing": false,
+    "canais": [],
+    "objetivo": ""
+  },
+  "features": {
+    "must_have": [],
+    "should_have": [],
+    "could_have": []
+  },
+  "ambiente": {
+    "node_validado": false,
+    "docker_validado": false,
+    "postgres_validado": false,
+    "git_validado": false
+  }
+}

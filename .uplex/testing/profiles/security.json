@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0",
+  "id":"security",
+  "description":"Project-configured security scripts only; professional scanners are reported separately when absent.",
+  "checks":[
+    {"id":"security","kind":"security","script":"security","required":false,"timeout_ms":300000},
+    {"id":"audit","kind":"security","script":"audit","required":false,"timeout_ms":300000}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"UplexOS Ingested Document",
+  "type":"object",
+  "required":["document_id","source_id","state","classification","content_hash","ingested_at"],
+  "properties":{
+    "document_id":{"type":"string"},"source_id":{"type":"string"},
+    "state":{"enum":["discovered","fetched","quarantined","parsed","normalized","reviewed","approved","indexed","superseded","rejected"]},
+    "classification":{"enum":["public","internal","confidential","restricted"]},
+    "source_version":{"type":["string","null"]},"content_hash":{"type":"string"},
+    "license":{"type":"string"},"ingested_at":{"type":"string","format":"date-time"},
+    "reviewed_by":{"type":["string","null"]},"limitations":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "dna": {
+    "background": "near-black (#0a0a0b) ou warm canvas (#FAFAF8)",
+    "lighting": "luz dramática, key light, soft falloff",
+    "depth": "parallax, sticky scroll, 3D perspective",
+    "typography": "serif display gigante + sans corpo limpa",
+    "texture": "film grain, vignette, grid dots",
+    "quality": "nível Awwwards Site of the Day"
+  },
+  "mapping": {
+    "saas": { "prompts": ["1.1-hero-site-of-the-day", "1.2-landing-scroll-driven", "1.4-dashboard-reveal", "1.5-pricing-cta"], "default": "1.2-landing-scroll-driven" },
+    "app_mobile": { "prompts": ["6.1-hero-app-mockup", "6.2-landing-app-completa", "6.4-feature-scroll"], "default": "6.2-landing-app-completa" },
+    "portfolio": { "prompts": ["2.1-portfolio-editorial-hero", "2.2-portfolio-scroll", "2.3-marca-pessoal-kinetic"], "default": "2.2-portfolio-scroll" },
+    "ecommerce": { "prompts": ["5.1-hero-produto-unico", "5.2-landing-ecommerce", "5.3-pdp-cinematografica"], "default": "5.2-landing-ecommerce" },
+    "agencia": { "prompts": ["4.1-hero-agencia-statement", "4.2-site-agencia-completo", "4.3-showreel-hero"], "default": "4.2-site-agencia-completo" },
+    "lancamento": { "prompts": ["3.1-hero-lancamento-countdown", "3.2-pagina-drop", "3.3-waitlist-coming-soon"], "default": "3.2-pagina-drop" },
+    "luxo": { "prompts": ["8.1-hero-fashion-editorial", "8.2-landing-marca-luxo", "8.3-joia-relogio"], "default": "8.2-landing-marca-luxo" },
+    "evento": { "prompts": ["7.1-hero-evento", "7.2-landing-evento-completa", "7.4-ingressos-tiers"], "default": "7.2-landing-evento-completa" }
+  }
+}

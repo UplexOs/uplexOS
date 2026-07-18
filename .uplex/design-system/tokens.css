@@ -1,0 +1,137 @@
+/* ============================================
+   UPLEXOS DESIGN SYSTEM — Tokens Oficiais
+   Baseado no Design System Blueprint (Grigoletto)
+   ============================================
+   Regra: Todo projeto UplexOS começa com este :root.
+   Nenhum valor cru é permitido. Tudo é token.
+   ============================================ */
+
+:root {
+  /* ==========================================
+     CORES — Paleta Pequena
+     Um canvas, uma tinta, um acento, dois cinzas
+     ========================================== */
+
+  /* Canvas — branco-quebrado quente (NUNCA #FFFFFF puro) */
+  --paper:        #FAFAF8;
+  --paper-base:   #F4F3EF;
+
+  /* Tinta — quase-preto suavizado (NUNCA #000000) */
+  --ink:          #16181D;
+  --ink-soft:     #1D2027;
+
+  /* Cinzas — hierarquia de texto e superfícies */
+  --muted:        #8B8F98;
+  --hairline:     rgba(22,24,29,0.12);
+
+  /* Acento — UM momento, NUNCA uma superfície */
+  --accent:       #2F6FED;
+  --accent-hover: #4C82FF;
+  --accent-deep:  #1E5AD6;
+
+  /* Superfície escura — para seções invertidas e dark mode */
+  --surface-dark: #0E0F12;
+  --hairline-dark: rgba(255,255,255,0.10);
+
+  /* ==========================================
+     ESPAÇAMENTO — Escala de 8 Pontos
+     8 / 16 / 24 / 32 / 48 / 64 — nada entre eles
+     ========================================== */
+  --space-1: 8px;    /* Ícone ↔ rótulo, inline apertado */
+  --space-2: 16px;   /* Padding de controles, itens de lista */
+  --space-3: 24px;   /* Padding de card, blocos relacionados */
+  --space-4: 32px;   /* Componentes dentro de uma seção */
+  --space-5: 48px;   /* Padding interno de seção */
+  --space-6: 64px;   /* Ritmo vertical entre seções principais */
+
+  /* ==========================================
+     RAIOS — Família de Raios
+     Elementos menores = raios menores
+     Nunca cantos retos (0px)
+     ========================================== */
+  --radius-sm:   8px;    /* Inputs, selects, controles pequenos */
+  --radius-md:   12px;   /* Cards padrão, tiles, popovers */
+  --radius-lg:   16px;   /* Cards grandes, modais, mídia */
+  --radius-xl:   24px;   /* Botões, pílulas proeminentes */
+  --radius-pill: 999px;  /* Chips, tags, avatares, toggles */
+
+  /* ==========================================
+     TIPOGRAFIA — Sistema de Duas Famílias
+     Uma display (serif), uma corpo (sans)
+     ========================================== */
+  --font-display: "Fraunces", "Instrument Serif", serif;
+  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Escala tipográfica fixa */
+  --text-label:   12px;   /* Sobretítulos, tags, chips */
+  --text-button:  14px;   /* CTAs, controles */
+  --text-nav:     16px;   /* Menus, links de navegação */
+  --text-body:    18px;   /* Parágrafos, corpo de texto */
+  --text-lead:    20px;   /* Introduções, subtítulos */
+  --text-h3:      24px;   /* Títulos de card, subtítulos de seção */
+  --text-h2:      32px;   /* Títulos de seção */
+  --text-h1:      56px;   /* Títulos de hero (desktop) */
+
+  /* ==========================================
+     SOMBRAS — Vocabulário de Três Níveis + Um Brilho
+     Suaves, baixa opacidade, tingidas na tinta
+     ========================================== */
+  --shadow-sm:   0 1px 2px  rgba(16,18,29,0.06);   /* Repouso */
+  --shadow-md:   0 8px 24px rgba(16,18,29,0.10);   /* Elevado */
+  --shadow-lg:   0 20px 50px rgba(16,18,29,0.16);  /* Flutuante */
+  --shadow-glow: 0 0 30px rgba(47,111,237,0.30);   /* Acento (raro) */
+
+  /* ==========================================
+     MOVIMENTO — Um Easing, Duas Durações
+     Sem bounces. Sem springs. Uma mão no controle.
+     ========================================== */
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-ui: 0.4s;        /* Feedback de UI: 0.3–0.5s */
+  --dur-entrance: 1.2s;  /* Entrada de seções: 1.0–1.4s */
+}
+
+/* ============================================
+   REGRAS GLOBAIS — Aplicadas automaticamente
+   ============================================ */
+
+body {
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-base) 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+a, .link {
+  color: var(--accent);
+  transition: opacity var(--dur-ui) var(--ease-signature);
+}
+a:hover, .link:hover {
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

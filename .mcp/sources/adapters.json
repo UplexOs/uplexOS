@@ -1,0 +1,14 @@
+{
+  "schema_version":"1.0",
+  "adapters":[
+    {"id":"static-registry","status":"active","network":false,"capabilities":["list","search","get","freshness","citation"]},
+    {"id":"manual-ingestion","status":"active","network":false,"capabilities":["quarantine","review-metadata"]},
+    {"id":"http-official-docs","status":"disabled","reason":"Requires domain allowlist, network approval, license handling and content-size controls."},
+    {"id":"osv-api","status":"disabled","reason":"Requires network policy, ecosystem/version input and response evidence."},
+    {"id":"cisa-kev-feed","status":"disabled","reason":"Requires scheduled network refresh and signed snapshot retention."},
+    {"id":"github-advisories","status":"disabled","reason":"Requires GitHub authentication, rate-limit and repository scope."},
+    {"id":"database-inspector","status":"disabled","reason":"Requires connection profile, read-only credentials and approved environment."},
+    {"id":"cloud-provider-docs","status":"disabled","reason":"Requires provider selection, network policy and version/region applicability."},
+    {"id":"telemetry-query","status":"disabled","reason":"Requires data source, tenant isolation, retention and query limits."}
+  ]
+}

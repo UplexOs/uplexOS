@@ -1,0 +1,73 @@
+/* UplexOS Neural Interface — enabled by .obsidian/appearance.json */
+:root,
+.theme-dark {
+  --uplex-bg: #070912;
+  --uplex-surface: #0d1120;
+  --uplex-blue: #006eff;
+  --uplex-cyan: #00e5ff;
+  --uplex-violet: #8a6cff;
+  --uplex-purple: #c58cff;
+  --uplex-green: #38ff8b;
+  --uplex-amber: #ffbf40;
+  --uplex-orange: #ff8c40;
+  --uplex-red: #ff4b5f;
+  --uplex-text: #dfe7ff;
+  --interactive-accent: var(--uplex-blue);
+  --interactive-accent-hover: var(--uplex-cyan);
+  --graph-line: rgba(92, 124, 255, 0.3);
+  --graph-node: var(--uplex-blue);
+  --graph-node-focused: #ffffff;
+  --graph-node-tag: var(--uplex-amber);
+  --graph-node-attachment: #657096;
+  --canvas-background: var(--uplex-bg);
+}
+
+.workspace-leaf-content[data-type="graph"] .view-content,
+.workspace-leaf-content[data-type="localgraph"] .view-content {
+  background:
+    radial-gradient(circle at 48% 46%, rgba(108, 124, 255, 0.17), transparent 32%),
+    radial-gradient(circle at 16% 58%, rgba(0, 229, 255, 0.08), transparent 25%),
+    radial-gradient(circle at 84% 35%, rgba(138, 108, 255, 0.08), transparent 24%),
+    linear-gradient(145deg, #070912, #090d18 55%, #070912) !important;
+}
+
+.graph-view.color-fill { color: var(--uplex-blue) !important; }
+.graph-view.color-fill-highlight { color: #ffffff !important; }
+.graph-view.color-fill-unresolved { color: #475171 !important; }
+.graph-view.color-fill-tag { color: var(--uplex-amber) !important; }
+.graph-view.color-fill-attachment { color: #657096 !important; }
+.graph-view.color-line { color: rgba(92, 124, 255, 0.3) !important; }
+.graph-view.color-line-highlight { color: var(--uplex-cyan) !important; }
+.graph-view.color-arrow { color: rgba(0, 229, 255, 0.72) !important; }
+.graph-view.color-text { color: rgba(223, 231, 255, 0.88) !important; }
+.graph-view.color-text-highlight { color: #ffffff !important; }
+
+.workspace-leaf-content[data-type="canvas"] .view-content,
+.canvas-wrapper,
+.canvas-container {
+  background-color: var(--uplex-bg) !important;
+  background-image:
+    linear-gradient(rgba(108, 124, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 124, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.06), transparent 38%) !important;
+  background-size: 32px 32px, 32px 32px, auto !important;
+}
+
+.canvas-node-container {
+  background: linear-gradient(145deg, rgba(18, 24, 47, 0.96), rgba(10, 14, 29, 0.96)) !important;
+  border-color: rgba(108, 124, 255, 0.58) !important;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.38), 0 0 22px rgba(0, 110, 255, 0.09) !important;
+}
+.canvas-node.is-focused .canvas-node-container,
+.canvas-node.is-selected .canvas-node-container {
+  border-color: var(--uplex-cyan) !important;
+  box-shadow: 0 0 0 1px var(--uplex-cyan), 0 0 28px rgba(0, 229, 255, 0.2) !important;
+}
+.canvas-node-label,
+.canvas-node-content { color: var(--uplex-text); }
+.canvas-edges path { stroke: rgba(108, 124, 255, 0.62) !important; }
+.canvas-edges marker path { fill: var(--uplex-cyan) !important; }
+
+.markdown-rendered h1 { letter-spacing: -0.035em; }
+.markdown-rendered .internal-link { text-decoration: none; }
+.markdown-rendered .internal-link:hover { text-shadow: 0 0 12px rgba(0, 229, 255, 0.6); }

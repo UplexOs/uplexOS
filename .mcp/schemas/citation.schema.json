@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"UplexOS Technical Citation",
+  "type":"object",
+  "required":["claim","source_id","source_url","retrieved_at","applicability","confidence"],
+  "properties":{
+    "claim":{"type":"string","minLength":1},
+    "source_id":{"type":"string"},
+    "source_url":{"type":"string","format":"uri"},
+    "source_version":{"type":["string","null"]},
+    "retrieved_at":{"type":"string","format":"date-time"},
+    "content_hash":{"type":["string","null"]},
+    "applicability":{"type":"string"},
+    "confidence":{"enum":["confirmed","high","medium","low"]},
+    "freshness":{"enum":["fresh","review_due","stale","superseded","source_unavailable","never_checked"]}
+  },
+  "additionalProperties":false
+}

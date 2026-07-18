@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import { mkdtemp, readFile, rm } from 'node:fs/promises';import { tmpdir } from 'node:os';import { resolve } from 'node:path';import { atomicWrite, hash, requireScopes, sandbox } from '../lib/core.mjs';
+
+test('sandbox impede path traversal',()=>{const root=resolve('safe');assert.throws(()=>sandbox(root,'../secret'),/fora do sandbox/);assert.equal(sandbox(root,'docs/a.md'),resolve(root,'docs/a.md'))});
+test('scopes usam default deny',()=>{assert.throws(()=>requireScopes({scopes:['project.read']},['project.files.write']),/Scopes ausentes/);assert.doesNotThrow(()=>requireScopes({scopes:['project.read']},['project.read']))});
+test('escrita atômica preserva conteúdo e hash',async()=>{const dir=await mkdtemp(resolve(tmpdir(),'uplex-mcp-'));const path=resolve(dir,'a/b.txt');await atomicWrite(path,'conteudo');assert.equal(await readFile(path,'utf8'),'conteudo');assert.equal(hash('conteudo').length,64);await rm(dir,{recursive:true,force:true})});

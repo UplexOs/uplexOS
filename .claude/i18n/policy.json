@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "instruction_language": "en",
+  "default_output_locale": "pt-BR",
+  "fallback_locale": "en",
+  "code_identifiers": "en",
+  "preserve_command_output": true,
+  "preserve_file_names": true,
+  "preserve_security_identifiers": true,
+  "project_locale_overrides_default": true,
+  "rules": [
+    "Operational instructions and agent reasoning contracts are authored in English.",
+    "User-facing responses are written in Brazilian Portuguese unless the project or user requests another locale.",
+    "Commands, diagnostics, package names, CVE identifiers, stack traces and source code are not translated.",
+    "Customer-facing artifacts use the locale configured for the active project."
+  ]
+}

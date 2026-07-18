@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "single_use_default": true,
+  "ttl_minutes_default": 30,
+  "required_for": ["git.push", "git.force_push", "deploy.production", "database.migrate", "files.delete", "external.paid_call", "external.data_transfer", "secrets.set", "secrets.rotate", "marketing.publish"]
+}

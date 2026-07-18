@@ -1,0 +1,25 @@
+{
+  "name": "uplexos",
+  "version": "4.1.0",
+  "private": true,
+  "description": "Runtime auditável de orquestração do UplexOS",
+  "type": "module",
+  "bin": {
+    "uplex": "./.uplex/cli/uplex.mjs"
+  },
+  "scripts": {
+        "uplex": "node .uplex/cli/uplex.mjs",
+    "doctor": "node .uplex/cli/uplex.mjs doctor",
+    "validate": "node .uplex/cli/uplex.mjs validate",
+    "knowledge:build": "node .uplex/ops/build-knowledge-vault.mjs",
+    "knowledge:validate": "node .uplex/ops/validate-knowledge-vault.mjs",
+    "obsidian:theme": "node .uplex/ops/apply-obsidian-theme.mjs",
+    "mcp:doctor": "node .mcp/doctor.mjs",
+    "mcp:test": "node --test .mcp/tests/*.test.mjs",
+    "test": "node --test .uplex/tests/*.test.mjs .mcp/tests/*.test.mjs",
+    "check": "node .uplex/ops/validate-skills.mjs && npm run validate && npm run knowledge:validate && npm run mcp:doctor && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

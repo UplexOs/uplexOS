@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Uplex MCP Tool",
+  "type": "object",
+  "required": ["name", "description", "risk", "readOnly", "requiresApproval", "scopes", "inputSchema"],
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z]+(?:[._][a-z]+)*$" },
+    "description": { "type": "string" },
+    "risk": { "enum": ["low", "medium", "high", "critical"] },
+    "readOnly": { "type": "boolean" },
+    "destructive": { "type": "boolean" },
+    "external": { "type": "boolean" },
+    "paid": { "type": "boolean" },
+    "requiresApproval": { "type": "boolean" },
+    "scopes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "inputSchema": { "type": "object" },
+    "evidence": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

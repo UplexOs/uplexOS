@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "project_id": "uplexos-core",
+  "tier": "enterprise",
+  "phase": "security",
+  "status": "in_progress",
+  "active_task_id": null,
+  "active_skill": "security-engineer",
+  "last_verified_commit": null,
+  "quality_gate": "passed",
+  "security_gate": "pending",
+  "blocked_by": [],
+  "approvals": [],
+  "updated_at": "2026-07-16T17:10:45.000Z"
+}

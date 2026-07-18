@@ -1,0 +1,121 @@
+{
+  "collapse-filter": true,
+  "search": "-path:99-archive",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:00-home",
+      "color": {
+        "a": 1,
+        "rgb": 7109887
+      }
+    },
+    {
+      "query": "path:01-timeline",
+      "color": {
+        "a": 1,
+        "rgb": 16760832
+      }
+    },
+    {
+      "query": "path:05-sources",
+      "color": {
+        "a": 1,
+        "rgb": 3407615
+      }
+    },
+    {
+      "query": "path:15-technology-radar",
+      "color": {
+        "a": 1,
+        "rgb": 16742912
+      }
+    },
+    {
+      "query": "path:20-governance",
+      "color": {
+        "a": 1,
+        "rgb": 11174143
+      }
+    },
+    {
+      "query": "path:30-engineering",
+      "color": {
+        "a": 1,
+        "rgb": 50175
+      }
+    },
+    {
+      "query": "path:35-intelligence",
+      "color": {
+        "a": 1,
+        "rgb": 8446207
+      }
+    },
+    {
+      "query": "path:40-security",
+      "color": {
+        "a": 1,
+        "rgb": 16731469
+      }
+    },
+    {
+      "query": "path:50-operations",
+      "color": {
+        "a": 1,
+        "rgb": 3735551
+      }
+    },
+    {
+      "query": "path:80-agents",
+      "color": {
+        "a": 1,
+        "rgb": 12944895
+      }
+    },
+    {
+      "query": "path:85-mcp",
+      "color": {
+        "a": 1,
+        "rgb": 65535
+      }
+    },
+    {
+      "query": "path:90-projects",
+      "color": {
+        "a": 1,
+        "rgb": 16750848
+      }
+    },
+    {
+      "query": "path:95-templates",
+      "color": {
+        "a": 1,
+        "rgb": 8429951
+      }
+    },
+    {
+      "query": "path:company OR path:guidelines OR path:governance OR path:playbooks OR path:protocols OR path:security OR path:sops",
+      "color": {
+        "a": 1,
+        "rgb": 6842721
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -0.4,
+  "nodeSizeMultiplier": 1.45,
+  "lineSizeMultiplier": 1.2,
+  "collapse-forces": false,
+  "centerStrength": 0.2,
+  "repelStrength": 14,
+  "linkStrength": 0.88,
+  "linkDistance": 140,
+  "scale": 0.1064681849294418,
+  "close": false
+}

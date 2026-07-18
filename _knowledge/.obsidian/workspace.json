@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "0e8cf70dfd423d6a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c9c910cd8c261738",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "89b34b564880425f",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "69ed2954de921971",
+    "type": "split",
+    "children": [
+      {
+        "id": "729468c620bc0583",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "306645303edae4e6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "0f1e8b5661461113",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "8731b20aadc85fd5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ecbb25c61e0584fb",
+    "type": "split",
+    "children": [
+      {
+        "id": "55a0b59d07c0d0a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "87fa6fb968e2dda2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "867bffc7d6279493",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "25f9f1ec61ac12ea",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "05f961cd1bff4006",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "feaa1e254d647f3e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "89b34b564880425f",
+  "lastOpenFiles": [
+    "80-agents/Agents Map.md",
+    "80-agents/catalog/Deploy.md",
+    "00-home/Knowledge Map.md",
+    "Sem título 2.base",
+    "Sem título 1.base",
+    "Sem título.base",
+    "README.md",
+    "Projects Map.md",
+    "Neural Timeline.canvas",
+    "30-engineering/Test Execution Layer.md",
+    "30-engineering/Test Discovery.md",
+    "30-engineering/Test Profiles.md",
+    "30-engineering/Test Plan.md",
+    "30-engineering/Test Execution.md",
+    "30-engineering/Runtime Smoke Testing.md",
+    "30-engineering/Test Evidence.md",
+    "30-engineering/Quality Gate.md",
+    "40-security/Security Test Execution.md",
+    "85-mcp/Testing MCP.md",
+    "05-sources/Freshness Model.md",
+    "05-sources/Deploy Sources.md",
+    "05-sources/Database Sources.md",
+    "05-sources/Citation Standard.md",
+    "85-mcp/Source MCP.md",
+    "15-technology-radar/Technology Radar.md",
+    "15-technology-radar/Radar - Adopt.md",
+    "15-technology-radar/Radar - Trial.md",
+    "15-technology-radar/Radar - Assess.md",
+    "15-technology-radar/Radar - Hold.md",
+    "15-technology-radar/Version Watch.md",
+    "15-technology-radar",
+    "35-intelligence",
+    "05-sources",
+    "95-templates",
+    "90-projects",
+    "85-mcp",
+    "80-agents/catalog"
+  ]
+}

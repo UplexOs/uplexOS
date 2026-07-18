@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "transport": "stdio-jsonrpc",
+  "servers": [
+    { "id": "project", "command": "node", "args": [".mcp/servers/project/index.mjs"], "enabled": true, "scopes": ["project.read"] },
+    { "id": "files", "command": "node", "args": [".mcp/servers/files/index.mjs"], "enabled": true, "scopes": ["project.files.read", "project.files.write"] },
+    { "id": "approval", "command": "node", "args": [".mcp/servers/approval/index.mjs"], "enabled": true, "scopes": ["approval.read", "approval.write", "approval.consume"] },
+    { "id": "evidence", "command": "node", "args": [".mcp/servers/evidence/index.mjs"], "enabled": true, "scopes": ["evidence.read", "evidence.write"] },
+    { "id": "knowledge", "command": "node", "args": [".mcp/servers/knowledge/index.mjs"], "enabled": true, "scopes": ["knowledge.read", "knowledge.write"] },
+    { "id": "environment", "command": "node", "args": [".mcp/servers/environment/index.mjs"], "enabled": true, "scopes": ["environment.read"] },
+    { "id": "security", "command": "node", "args": [".mcp/servers/security/index.mjs"], "enabled": true, "scopes": ["security.read", "security.scan"] },
+    { "id": "sources", "command": "node", "args": [".mcp/servers/sources/index.mjs"], "enabled": true, "scopes": ["sources.read", "sources.ingest"] },
+    { "id": "testing", "command": "node", "args": [".mcp/servers/testing/index.mjs"], "enabled": true, "scopes": ["testing.read", "testing.execute"] },
+    { "id": "git", "enabled": false, "reason": "Adaptador requer repositório Git configurado e política de branch." },
+    { "id": "browser", "enabled": false, "reason": "Adaptador requer Playwright e ambiente autorizado." },
+    { "id": "database", "enabled": false, "reason": "Adaptador requer conexão e credenciais por ambiente." },
+    { "id": "secrets", "enabled": false, "reason": "Adaptador requer provedor de cofre aprovado." },
+    { "id": "deploy", "enabled": false, "reason": "Adaptador requer provedor, gates e credenciais." },
+    { "id": "analytics", "enabled": false, "reason": "Adaptador requer catálogo e fonte de métricas." },
+    { "id": "marketing", "enabled": false, "reason": "Adaptador requer provedores e aprovações de publicação." }
+  ]
+}

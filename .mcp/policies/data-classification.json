@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "levels": ["public", "internal", "confidential", "restricted"],
+  "defaults": { "project": "internal", "knowledge": "internal", "approval": "confidential", "evidence": "confidential", "secret": "restricted" },
+  "external_transfer": { "public": "allowed", "internal": "approval", "confidential": "approval_and_minimize", "restricted": "denied" }
+}

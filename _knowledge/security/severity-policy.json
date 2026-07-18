@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "gate": {
+    "critical": "fail",
+    "high": "fail_unless_formally_accepted",
+    "medium": "conditional_pass_with_owner_and_due_date",
+    "low": "pass_with_tracking",
+    "informational": "pass"
+  },
+  "required_finding_fields": ["id", "category", "severity", "confidence", "location", "evidence", "impact", "remediation", "status"],
+  "confidence": ["confirmed", "high", "medium", "low"],
+  "states": ["open", "mitigated", "accepted", "false_positive", "not_applicable"]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/event.schema.json",
+  "title": "UplexOS Execution Event",
+  "type": "object",
+  "required": ["event_id", "event", "skill", "project_id", "timestamp", "result"],
+  "properties": {
+    "event_id": { "type": "string", "format": "uuid" },
+    "event": { "enum": ["skill_started", "skill_finished", "gate_evaluated", "approval_requested", "approval_recorded", "handoff_created"] },
+    "skill": { "type": "string" },
+    "project_id": { "type": "string" },
+    "task_id": { "type": ["string", "null"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "result": { "enum": ["passed", "failed", "not_run", "not_applicable", "blocked", "requires_approval"] },
+    "commands": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "estimated": { "type": "boolean", "default": false },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "default": "deny",
+  "roles": {
+    "reader": ["project.read", "project.files.read", "knowledge.read", "evidence.read", "approval.read", "environment.read", "security.read", "sources.read", "testing.read"],
+    "editor": ["project.read", "project.files.read", "project.files.write", "knowledge.read", "knowledge.write", "evidence.read", "evidence.write", "approval.read", "environment.read", "security.read", "sources.read", "testing.read"],
+    "operator": ["project.read", "project.files.read", "evidence.read", "evidence.write", "approval.read", "approval.write", "approval.consume", "environment.read", "security.read", "security.scan", "sources.read", "sources.ingest", "testing.read", "testing.execute"]
+  },
+  "constraints": {
+    "project_required": true,
+    "cross_project_access": false,
+    "secret_values_returned": false
+  }
+}

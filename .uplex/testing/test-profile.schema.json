@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"UplexOS Test Profile",
+  "type":"object",
+  "required":["schema_version","id","checks"],
+  "properties":{
+    "schema_version":{"const":"1.0"},"id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},"description":{"type":"string"},
+    "checks":{"type":"array","items":{"type":"object","required":["id","kind","script"],"properties":{"id":{"type":"string"},"kind":{"enum":["lint","typecheck","unit","integration","contract","build","e2e","accessibility","security","smoke"]},"script":{"type":"string","pattern":"^[a-zA-Z0-9:_-]+$"},"required":{"type":"boolean"},"timeout_ms":{"type":"integer","minimum":1000,"maximum":900000}},"additionalProperties":false}}
+  },"additionalProperties":false
+}

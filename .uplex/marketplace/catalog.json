@@ -1,0 +1,40 @@
+{
+  "employees": [
+    {
+      "id": "ai-engineer",
+      "name": "AI Engineer",
+      "department": "Engineering",
+      "description": "Integra OpenAI, LangChain e Vercel AI SDK nos produtos criados.",
+      "cost_tier": "Premium",
+      "status": "installed"
+    },
+    {
+      "id": "mobile-engineer",
+      "name": "Mobile App Developer",
+      "department": "Engineering",
+      "description": "Gera os wrappers Capacitor e React Native para lojas de apps.",
+      "cost_tier": "Standard",
+      "status": "available"
+    },
+    {
+      "id": "legal-expert",
+      "name": "Compliance & Legal",
+      "department": "Business",
+      "description": "Escreve Termos de Uso, LGPD e Politicas de Privacidade.",
+      "cost_tier": "Basic",
+      "status": "available"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "saas-b2b",
+      "name": "SaaS B2B Boilerplate",
+      "description": "Aciona 8 engenheiros simultâneos para montar um SaaS do zero."
+    },
+    {
+      "id": "ecommerce-edge",
+      "name": "E-Commerce Edge",
+      "description": "Foco total em performance de funil e pagamentos."
+    }
+  ]
+}

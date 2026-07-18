@@ -1,0 +1,6 @@
+{
+  "schema_version":"1.0",
+  "states":["fresh","review_due","stale","superseded","source_unavailable","never_checked"],
+  "calculation":{"fresh":"age_days <= refresh_days","review_due":"age_days > refresh_days and age_days <= refresh_days * 2","stale":"age_days > refresh_days * 2"},
+  "rules":["Never describe never-checked content as current.","Stale content may be used only with an explicit warning and applicability review.","Security advisories and provider status require shorter refresh intervals than stable standards."]
+}

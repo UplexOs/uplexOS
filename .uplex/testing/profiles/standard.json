@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0",
+  "id":"standard",
+  "description":"Standard project verification using configured package scripts.",
+  "checks":[
+    {"id":"lint","kind":"lint","script":"lint","required":false,"timeout_ms":120000},
+    {"id":"types","kind":"typecheck","script":"typecheck","required":false,"timeout_ms":120000},
+    {"id":"unit","kind":"unit","script":"test","required":false,"timeout_ms":180000},
+    {"id":"build","kind":"build","script":"build","required":true,"timeout_ms":300000}
+  ]
+}

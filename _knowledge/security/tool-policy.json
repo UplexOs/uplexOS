@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "execution": "local_only_by_default",
+  "tools": {
+    "npm-audit": { "category": "sca", "install": "bundled_with_npm", "network": true },
+    "semgrep": { "category": "sast", "install": "optional", "network": false },
+    "gitleaks": { "category": "secrets", "install": "optional", "network": false },
+    "trivy": { "category": "container_iac_sca", "install": "optional", "network": "database_updates" },
+    "osv-scanner": { "category": "sca", "install": "optional", "network": true },
+    "syft": { "category": "sbom", "install": "optional", "network": false },
+    "zap": { "category": "dast", "install": "optional", "network": true, "active_test_requires_approval": true }
+  },
+  "rules": [
+    "Detect before recommending installation.",
+    "Never install a tool without approval.",
+    "Never run active tests against an unapproved target.",
+    "Record exact tool version, command, exit code and limitations."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+	"nodes":[
+		{"id":"home","type":"file","file":"00-home/UplexOS.md","x":-1200,"y":-100,"width":360,"height":220,"color":"6"},
+		{"id":"e0","type":"file","file":"01-timeline/Era 0 - Foundation.md","x":-650,"y":-100,"width":360,"height":220,"color":"3"},
+		{"id":"e1","type":"file","file":"01-timeline/Era 1 - Governance.md","x":-100,"y":-100,"width":360,"height":220,"color":"4"},
+		{"id":"e2","type":"file","file":"01-timeline/Era 2 - Intelligence.md","x":450,"y":-100,"width":360,"height":220,"color":"5"},
+		{"id":"e3","type":"file","file":"01-timeline/Era 3 - Delivery.md","x":1000,"y":-100,"width":360,"height":220,"color":"1"},
+		{"id":"e4","type":"file","file":"01-timeline/Era 4 - Evolution.md","x":1550,"y":-100,"width":360,"height":220,"color":"2"},
+		{"id":"gov","type":"file","file":"20-governance/Governance Map.md","x":-100,"y":320,"width":340,"height":180,"color":"4"},
+		{"id":"eng","type":"file","file":"30-engineering/Engineering Map.md","x":450,"y":320,"width":340,"height":180,"color":"5"},
+		{"id":"sec","type":"file","file":"40-security/Security Map.md","x":1000,"y":320,"width":340,"height":180,"color":"1"},
+		{"id":"ops","type":"file","file":"50-operations/Operations Map.md","x":1000,"y":-500,"width":340,"height":180,"color":"2"},
+		{"id":"agents","type":"file","file":"80-agents/Agents Map.md","x":450,"y":-500,"width":340,"height":180,"color":"6"},
+		{"id":"sources","type":"file","file":"05-sources/Sources Map.md","x":0,"y":-500,"width":340,"height":180,"color":"5"},
+		{"id":"radar","type":"file","file":"15-technology-radar/Technology Radar.md","x":0,"y":650,"width":340,"height":180,"color":"3"},
+		{"id":"mcp","type":"file","file":"85-mcp/MCP Map.md","x":450,"y":650,"width":340,"height":180,"color":"5"},
+		{"id":"projects","type":"file","file":"90-projects/Projects Map.md","x":1550,"y":320,"width":340,"height":180,"color":"3"}
+	],
+	"edges":[
+		{"id":"1","fromNode":"home","toNode":"e0","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"2","fromNode":"e0","toNode":"e1","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"3","fromNode":"e1","toNode":"e2","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"4","fromNode":"e2","toNode":"e3","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"5","fromNode":"e3","toNode":"e4","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"6","fromNode":"e1","toNode":"gov","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"7","fromNode":"e2","toNode":"eng","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"8","fromNode":"e2","toNode":"agents","toEnd":"arrow","fromSide":"top","toSide":"bottom"},
+		{"id":"9","fromNode":"e2","toNode":"mcp","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"10","fromNode":"e3","toNode":"sec","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"11","fromNode":"e3","toNode":"ops","toEnd":"arrow","fromSide":"top","toSide":"bottom"},
+		{"id":"12","fromNode":"e4","toNode":"projects","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"13","fromNode":"projects","toNode":"e0","toEnd":"arrow","label":"feedback","fromSide":"left","toSide":"right"},
+		{"id":"14","fromNode":"eng","toNode":"sec","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"15","fromNode":"gov","toNode":"agents","toEnd":"arrow","fromSide":"top","toSide":"bottom"},
+		{"id":"16","fromNode":"mcp","toNode":"sec","toEnd":"arrow","fromSide":"top","toSide":"bottom"},
+		{"id":"17","fromNode":"sources","toNode":"e2","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"18","fromNode":"sources","toNode":"radar","toEnd":"arrow","fromSide":"bottom","toSide":"top"},
+		{"id":"19","fromNode":"radar","toNode":"eng","toEnd":"arrow","fromSide":"right","toSide":"left"},
+		{"id":"20","fromNode":"sources","toNode":"mcp","toEnd":"arrow","fromSide":"right","toSide":"left"}
+	]
+}

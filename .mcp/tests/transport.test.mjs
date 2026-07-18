@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import { spawn } from 'node:child_process';
+function call(server,request){return new Promise((ok,bad)=>{const p=spawn(process.execPath,[server],{stdio:['pipe','pipe','pipe']});let out='';p.stdout.on('data',x=>out+=x);p.stderr.on('data',x=>bad(Error(String(x))));p.on('close',()=>{try{ok(JSON.parse(out.trim()))}catch(e){bad(e)}});p.stdin.end(`${JSON.stringify(request)}\n`)})}
+test('project MCP anuncia ferramentas',async()=>{const x=await call('.mcp/servers/project/index.mjs',{jsonrpc:'2.0',id:1,method:'tools/list'});assert.equal(x.result.tools.length,3)});
+test('MCP nega chamada sem scope',async()=>{const x=await call('.mcp/servers/project/index.mjs',{jsonrpc:'2.0',id:1,method:'tools/call',params:{name:'project.list',arguments:{},context:{scopes:[]}}});assert.match(x.error.message,/Scopes ausentes/)});

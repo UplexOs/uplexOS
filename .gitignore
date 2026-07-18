@@ -1,0 +1,66 @@
+# UplexOS — Git Ignore
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+
+# NestJS
+dist/
+logs/
+*.tsbuildinfo
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# UplexOS
+.uplex/tutoriais/
+.uplex/setup/*.sh
+.uplex/setup/*.ps1
+
+# Projetos compilados
+_projetos/*/code/frontend/node_modules/
+_projetos/*/code/backend/node_modules/
+_projetos/*/code/backend/dist/
+
+# Banco de dados
+*.db
+*.sqlite
+*.db-journal
+
+# Assets gerados (opcional - mantenha se quiser versionar)
+# _projetos/*/marketing/geracoes/
+
+# Backups
+*.bak
+*.backup
+
+# Cache
+.cache/
+.eslintcache

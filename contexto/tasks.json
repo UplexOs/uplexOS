@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "project_id": "uplexos-core",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "Implementar runtime auditável do UplexOS",
+      "description": "CLI, FSM, gates, timeline, validação e diagnóstico.",
+      "status": "validated",
+      "priority": "critical",
+      "phase": "engineering",
+      "assignee": "scrum-master",
+      "dependencies": [],
+      "acceptance_criteria": ["CLI funcional", "Testes automatizados aprovados", "Documentação atualizada"],
+      "evidence": [".uplex/cli/uplex.mjs", ".uplex/runtime/core.mjs", ".uplex/tests/runtime.test.mjs", "Arquivos Soltos/docs/ROTEIRO-DEMO-UPLEXOS.md"],
+      "blocked_reason": null,
+      "created_at": "2026-07-16T17:04:00.000Z",
+      "updated_at": "2026-07-16T17:10:45.000Z"
+    }
+  ]
+}
