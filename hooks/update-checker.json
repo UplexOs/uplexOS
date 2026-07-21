@@ -1,0 +1,14 @@
+{
+  "hooks": [
+    {
+      "description": "Verifica atualizações em segundo plano antes de executar a tarefa",
+      "matcher": "tool == \"Skill\" || (tool == \"Bash\" && tool_input.command not contains \"check-update.js\" && tool_input.command not contains \"github.com/UplexOs\")",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node uplex-os/scripts/check-update.js"
+        }
+      ]
+    }
+  ]
+}

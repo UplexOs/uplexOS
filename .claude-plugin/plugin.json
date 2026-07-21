@@ -1,0 +1,9 @@
+{
+  "name": "uplex-os-core",
+  "version": "1.0.0",
+  "description": "Núcleo de Inteligência do Uplex OS - Transformando poder de processamento em facilidade de uso.",
+  "author": "Uplex",
+  "agents": "../agents",
+  "commands": "../commands",
+  "rules": "../rules"
+}

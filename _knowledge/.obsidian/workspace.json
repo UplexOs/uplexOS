@@ -14,7 +14,7 @@
               "type": "graph",
               "state": {},
               "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "title": "Graph view"
             }
           }
         ]
@@ -40,7 +40,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -168,26 +168,34 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "bases:Criar nova base": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
     }
   },
-  "active": "89b34b564880425f",
+  "active": "306645303edae4e6",
   "lastOpenFiles": [
+    "company/uplex-architecture-evolution.md",
+    "company/uplex-academy-roteiros.md",
+    "company/midjourney_prompts.md",
+    "company/midjourney-prompts.md",
+    "company/evolution-whatsapp-automation.md",
+    "company/ads-copywriting.md",
+    "company/academy-curriculum.md",
+    "Sem título.base",
+    "Sem título 2.base",
+    "Sem título 1.base",
+    "Neural Timeline.canvas",
+    "Untitled.base",
     "80-agents/Agents Map.md",
     "80-agents/catalog/Deploy.md",
     "00-home/Knowledge Map.md",
-    "Sem título 2.base",
-    "Sem título 1.base",
-    "Sem título.base",
     "README.md",
     "Projects Map.md",
-    "Neural Timeline.canvas",
     "30-engineering/Test Execution Layer.md",
     "30-engineering/Test Discovery.md",
     "30-engineering/Test Profiles.md",
@@ -202,19 +210,11 @@
     "05-sources/Deploy Sources.md",
     "05-sources/Database Sources.md",
     "05-sources/Citation Standard.md",
-    "85-mcp/Source MCP.md",
-    "15-technology-radar/Technology Radar.md",
-    "15-technology-radar/Radar - Adopt.md",
-    "15-technology-radar/Radar - Trial.md",
-    "15-technology-radar/Radar - Assess.md",
-    "15-technology-radar/Radar - Hold.md",
-    "15-technology-radar/Version Watch.md",
     "15-technology-radar",
     "35-intelligence",
     "05-sources",
     "95-templates",
     "90-projects",
-    "85-mcp",
-    "80-agents/catalog"
+    "85-mcp"
   ]
 }

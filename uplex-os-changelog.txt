@@ -1,0 +1,35 @@
+# Uplex OS - Changelog e Novidades
+
+**O que foi construído nesta atualização?**
+
+🚀 **Deploy Invisível** (`/publicar`)
+Agora o sistema possui uma esteira de deploy amigável. Sem jargões ou configurações complexas de servidor, o usuário apenas pede para publicar e o Uplex OS prepara a infraestrutura e publica o projeto.
+
+🔑 **Central de Integrações** (`/configurar-chaves`)
+Um assistente guiado que gerencia as integrações de forma humana. Precisamos conectar a Stripe? O Uplex OS não pede para você abrir o arquivo `.env`. Ele fala: *"Copie a chave e cole aqui"*, e ele mesmo faz a inserção segura por baixo dos panos.
+
+🛡️ **Gatekeeper de Negócios**
+O Uplex OS não apenas cria código, ele atua como seu Diretor de Tecnologia. Se você pedir para construir um sistema inseguro ou que quebre normas de conformidade (LGPD/PCI), ele bloqueará a solicitação de forma construtiva e explicará o porquê, priorizando a segurança do seu negócio.
+
+📊 **Dashboard do Diretor** (`/painel`)
+Cansado de ler arquivos soltos? Ao digitar `/painel`, o sistema consome os dados do Obsidian e gera um relatório executivo bonito no próprio chat. Veja de perto o status dos projetos e o próximo passo recomendado.
+
+🔄 **Reversão Invisível** (`/desfazer`)
+Cometeu um erro ou não gostou do último design? Diga `/desfazer`. O sistema cuida de voltar a versão do seu código para o que estava antes, totalmente abstraído da complexidade do Git.
+
+🎨 **Novo Painel de Comando Visual no Obsidian**
+O Obsidian ganhou uma reformulação visual completa!
+- Fundo Preto ("Dark Executive").
+- Linhas de conexão em cinza sutil, acendendo em Laranja Uplex ao passar o mouse.
+- **Nós Coloridos por Setor:**
+  - 🟠 O Núcleo (Regras e Empresa)
+  - 🟡 Negócios e Planejamento
+  - 🔵 Engenharia de Software
+  - 🟣 Design e Marketing
+  - 🔴 Segurança e QA
+  - 🟢 Infra e Deploy
+  - ⚪ Seus Projetos
+
+---
+
+✨ O Uplex OS deixou de ser um gerador de código para se tornar a sua **Software House Hospedada** completa.

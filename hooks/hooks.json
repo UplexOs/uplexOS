@@ -1,0 +1,34 @@
+{
+  "hooks": [
+    {
+      "description": "Intercepta erros técnicos complexos de bash/arquivos e avisa de forma simples",
+      "matcher": "error != null && (tool == \"Bash\" || tool == \"Read\" || tool == \"Write\")",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Ops, parece que não encontrei o arquivo ou o local especificado. Você pode confirmar se o nome está certinho?"
+        }
+      ]
+    },
+    {
+      "description": "Substitui mensagens técnicas de busca por um aviso amigável",
+      "matcher": "tool == \"WebSearch\" || tool == \"WebFetch\"",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Estou pesquisando as informações mais recentes para você, um instante..."
+        }
+      ]
+    },
+    {
+      "description": "Substitui mensagens técnicas de atualizacao",
+      "matcher": "tool == \"Bash\" && tool_input.command contains \"github.com/UplexOs/uplexOS\"",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Sincronizando as melhorias mais recentes da nuvem..."
+        }
+      ]
+    }
+  ]
+}

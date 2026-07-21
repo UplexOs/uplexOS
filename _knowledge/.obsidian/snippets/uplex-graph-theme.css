@@ -1,0 +1,33 @@
+/* 
+========================================================================
+   UPLEX OS - TEMA DO GRAPH VIEW (DARK EXECUTIVE)
+========================================================================
+*/
+
+.theme-dark {
+    /* Fundo do Grafo: Preto Profundo e Absoluto */
+    --graph-background: #050505;
+    
+    /* Linhas de conexão: Neutro escuro (não competem com as cores dos setores) */
+    --graph-line: rgba(100, 100, 100, 0.25);
+    
+    /* Quando você passa o mouse sobre a linha, brilha em Laranja Uplex */
+    --graph-line-highlight: rgba(255, 122, 0, 0.85);
+    
+    /* Texto dos nós: Branco nítido para leitura fácil */
+    --graph-text: #ffffff;
+    
+    /* Quando o nó está selecionado/ativo: Laranja Brilhante */
+    --graph-node-focused: #FF7A00;
+}
+
+/* Modificação para deixar os nós de setores mais "vivos" contra o fundo preto */
+.graph-view.color-fill {
+    opacity: 1;
+}
+
+/* Deixa o texto levemente em negrito para os leigos lerem melhor os rótulos */
+.graph-view.color-text {
+    font-weight: 600;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+}
