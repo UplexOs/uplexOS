@@ -165,7 +165,7 @@ export function EcommerceSection() {
             </div>
 
             {/* Grid/Carousel de Produtos */}
-            <Carousel opts={{ align: "start", dragFree: true }} className="w-full mt-6">
+            <Carousel opts={{ align: "start", dragFree: true, loop: true }} className="w-full mt-6">
               <CarouselContent className="-ml-6">
                 {PRODUCTS.map((product, index) => (
                   <CarouselItem key={product.id} className="pl-6 basis-[85%] sm:basis-[314px]">
