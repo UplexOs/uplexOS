@@ -123,12 +123,13 @@ export function LocationAndFooter() {
           <div className="max-w-[400px]">
             {/* Logo Customizada Terra Nova */}
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#A62B31] font-[var(--font-display)] font-bold text-xl italic leading-none pt-1">
-                T
-              </div>
-              <span className="font-[var(--font-display)] font-bold text-[22px] tracking-wide">
-                TERRA NOVA
-              </span>
+              <a href="/">
+                <img
+                  src="/logo/logo.png"
+                  alt="Restaurante Terra Nova"
+                  className="h-[60px] w-auto object-contain brightness-0 invert"
+                />
+              </a>
             </div>
 
             <h2 className="font-[var(--font-display)] text-[32px] md:text-[36px] font-[600] mb-6 leading-[1.15] text-[#FFFDF8]">
