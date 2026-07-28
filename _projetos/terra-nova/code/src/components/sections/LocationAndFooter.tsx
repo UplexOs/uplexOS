@@ -63,7 +63,7 @@ export function LocationAndFooter() {
              {/* Fix overflow in mapping - wrap iframe in flex-grow container with strict h-full */}
              <div className="w-full h-full flex-grow relative min-h-[400px]">
                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1m3!1d3657.854659424888!2d-46.680655623912946!3d-23.537722760721245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57e3f8990bb5%3A0x633b432e1cd3f211!2sR.%20Apinaj%C3%A9s%2C%20734%20-%20Perdizes%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005017-000!5e0!3m2!1spt-BR!2sbr!4v1714061234567!5m2!1spt-BR!2sbr"
+                  src="https://maps.google.com/maps?q=Rua+Apinaj%C3%A9s,+734+-+Perdizes,+S%C3%A3o+Paulo+-+SP&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                   className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen={false}
                   loading="lazy"
