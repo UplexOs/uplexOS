@@ -65,7 +65,7 @@ export function MenuPreview() {
   ]
 
   return (
-    <section className="w-full bg-[var(--color-brand-cream-050)] pt-[112px] pb-[112px] overflow-hidden">
+    <section id="cardapio" className="w-full bg-[var(--color-brand-cream-050)] pt-[112px] pb-[112px] overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-8">
         
         {/* Cabeçalho */}
