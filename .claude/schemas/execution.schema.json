@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/execution.schema.json",
+  "title": "UplexOS Execution",
+  "type": "object",
+  "required": ["schema_version", "execution_id", "project_id", "request", "status", "created_at", "updated_at"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "execution_id": { "type": "string", "pattern": "^run-[0-9a-f-]+$" },
+    "project_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "request": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["planned", "running", "waiting_for_approval", "blocked", "completed", "cancelled", "failed"] },
+    "current_stage": { "type": ["string", "null"] },
+    "plan": { "type": ["object", "null"] },
+    "started_at": { "type": ["string", "null"], "format": "date-time" },
+    "completed_at": { "type": ["string", "null"], "format": "date-time" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

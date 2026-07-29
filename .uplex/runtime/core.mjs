@@ -1,7 +1,8 @@
-import { appendFile, access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { appendFile, access, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { constants } from 'node:fs';
-import { resolve, relative } from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { dirname, resolve, relative, sep } from 'node:path';
+import { createHash, randomUUID } from 'node:crypto';
+import { consumeApproval } from './governance.mjs';
 
 export const ROOT = resolve(import.meta.dirname, '../..');
 export const PROJECTS = resolve(ROOT, '_projetos');
@@ -16,6 +17,15 @@ export async function exists(path) {
 
 export async function workflow() {
   return readJson(resolve(ROOT, '.uplex/runtime/workflow.json'));
+}
+
+export function hash(content) {
+  return createHash('sha256').update(content).digest('hex');
+}
+
+export function inside(root, target) {
+  const rel = relative(root, target);
+  return rel !== '..' && !rel.startsWith(`..${sep}`) && !rel.includes('\0');
 }
 
 export function projectDir(projectId) {
@@ -47,7 +57,14 @@ export function newTasks(projectId) {
 }
 
 export async function writeJson(path, value) {
-  await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+  await atomicWrite(path, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+export async function atomicWrite(path, content) {
+  await mkdir(dirname(path), { recursive: true });
+  const temporary = `${path}.${randomUUID()}.tmp`;
+  await writeFile(temporary, content, 'utf8');
+  await rename(temporary, path);
 }
 
 export async function recordEvent(projectId, event, skill, result, details = {}) {
@@ -56,11 +73,39 @@ export async function recordEvent(projectId, event, skill, result, details = {})
     event_id: randomUUID(), event, skill: skill ?? 'uplex-runtime', project_id: projectId,
     task_id: details.task_id ?? null, timestamp: new Date().toISOString(), result,
     commands: details.commands ?? [], evidence: details.evidence ?? [], estimated: false,
-    metadata: details.metadata ?? {}
+    execution_id: details.execution_id ?? null, metadata: details.metadata ?? {}
   };
   await mkdir(resolve(dir, 'contexto'), { recursive: true });
   await appendFile(resolve(dir, 'contexto/timeline.jsonl'), `${JSON.stringify(payload)}\n`, 'utf8');
   return payload;
+}
+
+export async function createExecution(projectId, request, plan = null) {
+  const project = await loadProject(projectId);
+  const execution = {
+    schema_version: '1.0', execution_id: `run-${randomUUID()}`, project_id: projectId,
+    request, status: 'planned', current_stage: null, plan, started_at: null,
+    completed_at: null, created_at: new Date().toISOString(), updated_at: new Date().toISOString()
+  };
+  const path = resolve(project.dir, 'contexto/executions', `${execution.execution_id}.json`);
+  await writeJson(path, execution);
+  await recordEvent(projectId, 'execution_created', 'uplex-orchestrator', 'passed', {
+    execution_id: execution.execution_id, metadata: { request }
+  });
+  return execution;
+}
+
+export async function resolveEvidence(project, item) {
+  if (typeof item !== 'string' || !item.trim()) throw new Error('Caminho de evidência inválido.');
+  const fromRoot = resolve(ROOT, item);
+  const target = inside(project.dir, fromRoot) ? fromRoot : resolve(project.dir, item);
+  if (!inside(project.dir, target)) throw new Error(`Evidência fora do projeto: ${item}`);
+  if (!await exists(target)) throw new Error(`Evidência não encontrada: ${item}`);
+  const content = await readFile(target);
+  return {
+    path: relative(project.dir, target).replaceAll('\\', '/'),
+    sha256: hash(content), size: content.length
+  };
 }
 
 export function validateState(state, flow) {
@@ -99,24 +144,68 @@ export async function initProject({ projectId, tier = 'mvp', client = 'Cliente',
   return state;
 }
 
-export async function advance(projectId, { result = 'passed', evidence = [], approved = false } = {}) {
+export function migrateLegacyState(raw, projectId, flow) {
+  if (raw.schema_version === '1.0') return raw;
+  const legacyPhase = raw.fase_atual ?? 'onboarding_concluido';
+  const phase = flow.legacy_phase_aliases?.[legacyPhase] ?? 'onboarding';
+  const tierText = String(raw.tier ?? '').toLowerCase();
+  const tier = tierText.includes('enterprise') || tierText.includes('tier 3') ? 'enterprise'
+    : tierText.includes('startup') || tierText.includes('tier 2') ? 'startup' : 'mvp';
+  return {
+    ...newState(projectId, tier), phase, active_skill: flow.phases[phase]?.skill ?? null,
+    security_gate: raw.status_seguranca === 'aprovado' ? 'passed' : 'pending',
+    updated_at: new Date().toISOString()
+  };
+}
+
+export async function migrateProject(projectId) {
+  const dir = projectDir(projectId);
+  const statePath = resolve(dir, 'contexto/estado.json');
+  const tasksPath = resolve(dir, 'contexto/tasks.json');
+  if (!await exists(statePath)) throw new Error(`Projeto não encontrado: ${projectId}`);
+  const project = { dir, statePath, tasksPath, state: await readJson(statePath) };
+  const flow = await workflow();
+  if (project.state.schema_version === '1.0') return { migrated: false, state: project.state };
+  const state = migrateLegacyState(project.state, projectId, flow);
+  await writeJson(project.statePath, state);
+  if (!await exists(project.tasksPath)) await writeJson(project.tasksPath, newTasks(projectId));
+  await recordEvent(projectId, 'project_migrated', 'uplex-runtime', 'passed', {
+    metadata: { from: 'legacy', to: '1.0' }
+  });
+  return { migrated: true, state };
+}
+
+export async function advance(projectId, { result = 'passed', evidence = [], approvalId = null, justification = null, executionId = null } = {}) {
   const project = await loadProject(projectId);
   const flow = await workflow();
   const phase = flow.phases[project.state.phase];
   if (!phase || !phase.next) throw new Error('O projeto não possui próxima fase.');
   if (result !== 'passed' && result !== 'not_applicable') throw new Error('Somente resultados passed ou not_applicable liberam handoff.');
+  if (result === 'not_applicable' && !justification) throw new Error('not_applicable exige justificativa.');
+  if (result === 'not_applicable' && phase.gate) throw new Error('Gates de qualidade e segurança não podem ser ignorados.');
   if (!evidence.length) throw new Error('Evidência verificável é obrigatória para avançar.');
-  for (const item of evidence) if (!await exists(resolve(ROOT, item))) throw new Error(`Evidência não encontrada: ${item}`);
-  if (phase.requires_approval && !approved) throw new Error('Esta transição exige aprovação explícita (--approve).');
+  const artifacts = [];
+  for (const item of evidence) artifacts.push(await resolveEvidence(project, item));
+  const action = `workflow.advance:${project.state.phase}`;
+  if (phase.requires_approval) {
+    if (!approvalId) throw new Error(`Esta transição exige aprovação específica para ${action}.`);
+    await consumeApproval({ approvalId, action, projectId });
+  }
   if (phase.gate) project.state[phase.gate] = result;
   const next = flow.phases[phase.next];
   project.state.phase = phase.next;
   project.state.status = phase.next === 'completed' ? 'completed' : 'in_progress';
   project.state.active_skill = next.skill;
   project.state.updated_at = new Date().toISOString();
-  if (approved) project.state.approvals.push(`${phase.skill}:${project.state.updated_at}`);
+  if (approvalId) project.state.approvals.push(approvalId);
   await writeJson(project.statePath, project.state);
-  await recordEvent(projectId, 'gate_evaluated', phase.skill, result, { evidence, metadata: { from: phase.label, to: next.label, approved } });
-  await recordEvent(projectId, 'handoff_created', next.skill, 'passed', { evidence, metadata: { from_skill: phase.skill } });
+  await recordEvent(projectId, 'gate_evaluated', phase.skill, result, {
+    execution_id: executionId, evidence: artifacts.map((item) => item.path),
+    metadata: { from: phase.label, to: next.label, approval_id: approvalId, justification, artifacts }
+  });
+  await recordEvent(projectId, 'handoff_created', next.skill, 'passed', {
+    execution_id: executionId, evidence: artifacts.map((item) => item.path),
+    metadata: { from_skill: phase.skill, artifacts }
+  });
   return project.state;
 }

@@ -43,6 +43,7 @@ Thumbs.db
 .uplex/tutoriais/
 .uplex/setup/*.sh
 .uplex/setup/*.ps1
+.mcp/data/
 
 # Projetos compilados
 _projetos/*/code/frontend/node_modules/

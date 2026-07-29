@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/work-order.schema.json",
+  "title": "UplexOS Work Order",
+  "type": "object",
+  "required": ["schema_version", "work_order_id", "project_id", "execution_id", "capability_id", "status", "objective", "expected_outputs", "read_scopes", "write_scopes", "context_pack", "created_at"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "work_order_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "execution_id": { "type": "string" },
+    "capability_id": { "type": "string" },
+    "status": { "const": "ready" },
+    "objective": { "type": "string" },
+    "expected_outputs": { "type": "array", "items": { "type": "string" } },
+    "read_scopes": { "type": "array", "items": { "type": "string" } },
+    "write_scopes": { "type": "array", "items": { "type": "string" } },
+    "approval_boundaries": { "type": "array", "items": { "type": "string" } },
+    "context_pack": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

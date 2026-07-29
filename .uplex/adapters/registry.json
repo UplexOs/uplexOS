@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "default_adapter": "uplex-native",
+  "adapters": [
+    {
+      "id": "uplex-native",
+      "type": "builtin",
+      "enabled": true,
+      "args": [],
+      "input": "internal-json",
+      "output": "internal-json",
+      "reason": "Executor determinístico nativo para o workflow vertical inicial."
+    },
+    {
+      "id": "local-process",
+      "type": "process-json",
+      "enabled": false,
+      "command": null,
+      "args": [],
+      "timeout_ms": 900000,
+      "input": "stdin-json",
+      "output": "stdout-json",
+      "reason": "Configure um comando local explicitamente antes do dispatch."
+    }
+  ],
+  "detection": [
+    { "id": "kilo", "command": "kilo", "args": ["--version"] },
+    { "id": "claude", "command": "claude", "args": ["--version"] },
+    { "id": "codex", "command": "codex", "args": ["--version"] }
+  ]
+}

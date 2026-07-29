@@ -26,8 +26,8 @@ if [ ! -d "$SOURCE_DIR" ]; then
 fi
 
 if [ -d "$DEST_DIR" ]; then
-  echo "⚠️ Aviso: Boilerplate '$2' já existe. Sobrescrevendo..."
-  rm -rf "$DEST_DIR"
+  echo "Erro: Boilerplate '$2' já existe. Remova-o explicitamente antes de continuar."
+  exit 1
 fi
 
 echo "📦 1/3 Copiando arquivos base..."
@@ -39,7 +39,7 @@ echo "🧹 2/3 Executando rotina de limpeza de dados sensíveis (Sanitization)..
 find "$DEST_DIR" -type d -name "node_modules" -exec rm -rf {} + 2>/dev/null || true
 find "$DEST_DIR" -type d -name ".next" -exec rm -rf {} + 2>/dev/null || true
 find "$DEST_DIR" -type d -name "dist" -exec rm -rf {} + 2>/dev/null || true
-find "$DEST_DIR" -type d -name ".env*" -exec rm -f {} + 2>/dev/null || true
+find "$DEST_DIR" -type f -name ".env*" ! -name ".env.example" -delete
 
 # Cria um .env.example genérico se não existir
 if [ ! -f "$DEST_DIR/.env.example" ]; then
@@ -51,7 +51,7 @@ if [ ! -f "$DEST_DIR/.env.example" ]; then
 fi
 
 echo "📝 3/3 Gerando manifesto do Boilerplate..."
-cat << 'MANIFESTO' > "$DEST_DIR/BOILERPLATE_INFO.md"
+cat << MANIFESTO > "$DEST_DIR/BOILERPLATE_INFO.md"
 # Boilerplate: $2
 **Origem:** $1
 **Data de Criação:** $(date '+%Y-%m-%d %H:%M:%S')

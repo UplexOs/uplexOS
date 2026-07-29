@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/adapter.schema.json",
+  "title": "UplexOS Agent Adapter",
+  "type": "object",
+  "required": ["id", "type", "enabled", "args", "input", "output"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "enum": ["process-json", "builtin"] },
+    "enabled": { "type": "boolean" },
+    "command": { "type": ["string", "null"] },
+    "args": { "type": "array", "items": { "type": "string" } },
+    "timeout_ms": { "type": "integer", "minimum": 1000 },
+    "input": { "enum": ["stdin-json", "internal-json"] },
+    "output": { "enum": ["stdout-json", "internal-json"] },
+    "reason": { "type": "string" },
+    "environment": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

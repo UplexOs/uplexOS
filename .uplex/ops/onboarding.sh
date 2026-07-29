@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# UplexOS - Initializer & Client Onboarding CLI
-# Este script conduz uma entrevista interativa e gera a base de conhecimento estruturada do cliente e do projeto.
+# UplexOS - wrapper legado de onboarding
+# A CLI Node é a fonte única para criação de projetos e estado.
 
 # Definição de Cores para o Terminal (Estilo Corporativo)
 CYAN='\033[0;36m'
@@ -77,51 +77,20 @@ cat << MARKDOWN > "$CLIENT_FILE"
 - $project_slug ($project_tier)
 MARKDOWN
 
-# 2. Cria a pasta do projeto
+# 2. Cria o projeto pelo runtime canônico
+case $project_tier_option in
+  2) runtime_tier="startup" ;;
+  3) runtime_tier="enterprise" ;;
+  *) runtime_tier="mvp" ;;
+esac
+
+node .uplex/cli/uplex.mjs init "$project_slug" --tier "$runtime_tier" --client "$client_name" --goal "$project_goal" || exit 1
 PROJECT_DIR="_projetos/$project_slug"
-mkdir -p "$PROJECT_DIR/contexto"
-mkdir -p "$PROJECT_DIR/code"
-mkdir -p "$PROJECT_DIR/marketing"
-
-# 3. Gera o Escopo do Projeto (projeto.md)
-cat << MARKDOWN > "$PROJECT_DIR/projeto.md"
-# Project Scope: $project_slug
-
-## 1. Visão Geral
-- **Cliente:** $client_name
-- **Tier de Operação:** $project_tier
-- **Objetivo Central:** $project_goal
-
-## 2. Diretrizes Arquiteturais
-*(A ser preenchido pelo Software Architect)*
-- **Frontend:** Next.js 15, Tailwind v4
-- **Backend:** [A Definir]
-- **Banco de Dados:** [A Definir]
-
-## 3. Funcionalidades (MVP)
-*(A ser expandido pelo Product Manager)*
-1. [Funcionalidade 1]
-2. [Funcionalidade 2]
-MARKDOWN
-
-# 4. Gera a Máquina de Estados Inicial
-cat << JSON > "$PROJECT_DIR/contexto/estado.json"
-{
-  "project_name": "$project_slug",
-  "client": "$client_name",
-  "tier": "$project_tier",
-  "fase_atual": "onboarding_concluido",
-  "proxima_fase": "planejamento_arquitetural",
-  "agente_requerido": "software-architect",
-  "status_seguranca": "pendente",
-  "data_inicio": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-}
-JSON
 
 echo -e "${CYAN}=========================================================${NC}"
 echo -e "${GREEN}✓ ONBOARDING CONCLUÍDO COM SUCESSO!${NC}"
 echo -e "Dossiê do Cliente gerado em: ${YELLOW}$CLIENT_FILE${NC}"
 echo -e "Escopo do Projeto inicializado em: ${YELLOW}$PROJECT_DIR/projeto.md${NC}"
 echo -e "Máquina de Estados criada em: ${YELLOW}$PROJECT_DIR/contexto/estado.json${NC}"
-echo -e "\nPróximo Passo: Solicite a intervenção do ${CYAN}/software-architect${NC} para desenhar o plano técnico."
+echo -e "\nPróximo passo: descreva em linguagem natural o que deseja construir."
 echo -e "${CYAN}=========================================================${NC}"

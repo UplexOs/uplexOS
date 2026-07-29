@@ -6,10 +6,11 @@
   "required": ["event_id", "event", "skill", "project_id", "timestamp", "result"],
   "properties": {
     "event_id": { "type": "string", "format": "uuid" },
-    "event": { "enum": ["skill_started", "skill_finished", "gate_evaluated", "approval_requested", "approval_recorded", "handoff_created"] },
+    "event": { "enum": ["execution_created", "execution_started", "stage_started", "stage_finished", "project_migrated", "skill_started", "skill_finished", "gate_evaluated", "approval_requested", "approval_recorded", "handoff_created"] },
     "skill": { "type": "string" },
     "project_id": { "type": "string" },
     "task_id": { "type": ["string", "null"] },
+    "execution_id": { "type": ["string", "null"] },
     "timestamp": { "type": "string", "format": "date-time" },
     "result": { "enum": ["passed", "failed", "not_run", "not_applicable", "blocked", "requires_approval"] },
     "commands": { "type": "array", "items": { "type": "string" } },

@@ -157,6 +157,26 @@
               "icon": "lucide-list",
               "title": "Sumário"
             }
+          },
+          {
+            "id": "7624c303bf5a9263",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
+              "icon": "ag-node-list",
+              "title": "Juggl nodes"
+            }
+          },
+          {
+            "id": "d8194f556d8908bb",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "ag-style",
+              "title": "Juggl style"
+            }
           }
         ],
         "currentTab": 4
@@ -174,11 +194,13 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "juggl:Juggl global graph": false
     }
   },
-  "active": "306645303edae4e6",
+  "active": "89b34b564880425f",
   "lastOpenFiles": [
+    "20-governance/Evidence Model.md",
     "company/uplex-architecture-evolution.md",
     "company/uplex-academy-roteiros.md",
     "company/midjourney_prompts.md",
@@ -209,7 +231,6 @@
     "05-sources/Freshness Model.md",
     "05-sources/Deploy Sources.md",
     "05-sources/Database Sources.md",
-    "05-sources/Citation Standard.md",
     "15-technology-radar",
     "35-intelligence",
     "05-sources",

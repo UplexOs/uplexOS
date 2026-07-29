@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/context-pack.schema.json",
+  "title": "UplexOS Context Pack",
+  "type": "object",
+  "required": ["schema_version", "project_id", "execution_id", "capability_id", "request", "project_state", "incoming_handoffs", "generated_at"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "project_id": { "type": "string" },
+    "execution_id": { "type": "string" },
+    "capability_id": { "type": "string" },
+    "request": { "type": "string" },
+    "project_state": { "type": "object" },
+    "active_task": { "type": ["object", "null"] },
+    "project_document": { "type": ["string", "null"] },
+    "incoming_handoffs": { "type": "array" },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "2.0",
+  "capabilities": [
+    { "id": "architecture.plan", "domain": "architecture", "risk_level": "low", "agent": "architecture", "depends_on": [], "outputs": ["architecture_plan"] },
+    { "id": "design.system", "domain": "design", "risk_level": "low", "agent": "design", "depends_on": ["architecture.plan"], "outputs": ["design_system"] },
+    { "id": "database.model", "domain": "engineering.database", "risk_level": "medium", "agent": "backend", "depends_on": ["architecture.plan"], "outputs": ["data_model"] },
+    { "id": "backend.supabase", "domain": "engineering.backend", "risk_level": "high", "agent": "backend", "depends_on": ["architecture.plan", "database.model"], "outputs": ["backend_changes"], "requires_approval": ["database.remote_migration"] },
+    { "id": "auth.implement", "domain": "engineering.authentication", "risk_level": "high", "agent": "backend", "depends_on": ["architecture.plan", "database.model"], "outputs": ["authorization_model"] },
+    { "id": "frontend.implement", "domain": "engineering.frontend", "risk_level": "medium", "agent": "frontend", "depends_on": ["architecture.plan", "design.system"], "outputs": ["frontend_changes"] },
+    { "id": "quality.verify", "domain": "quality", "risk_level": "low", "agent": "quality", "depends_on": [], "outputs": ["quality_report"] },
+    { "id": "security.review", "domain": "security", "risk_level": "high", "agent": "security", "depends_on": ["quality.verify"], "outputs": ["security_report"] },
+    { "id": "runtime.start", "domain": "operations", "risk_level": "medium", "agent": "operations", "depends_on": ["quality.verify", "security.review"], "outputs": ["runtime_report"] }
+  ]
+}

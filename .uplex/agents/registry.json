@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "agents": [
+    { "id": "architecture", "read_scopes": ["project.context", "project.code"], "write_scopes": ["project.docs"] },
+    { "id": "design", "read_scopes": ["project.context", "project.code"], "write_scopes": ["project.design", "project.docs"] },
+    { "id": "frontend", "read_scopes": ["project.context", "project.code", "project.design"], "write_scopes": ["project.code", "project.reports"] },
+    { "id": "backend", "read_scopes": ["project.context", "project.code", "project.configuration"], "write_scopes": ["project.code", "project.docs", "project.reports"] },
+    { "id": "quality", "read_scopes": ["project.context", "project.code"], "write_scopes": ["project.reports"] },
+    { "id": "security", "read_scopes": ["project.context", "project.code", "project.configuration"], "write_scopes": ["project.reports"] },
+    { "id": "operations", "read_scopes": ["project.context", "project.code", "environment"], "write_scopes": ["project.reports"] }
+  ]
+}

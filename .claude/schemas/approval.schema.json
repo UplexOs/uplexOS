@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/approval.schema.json",
+  "title": "UplexOS Approval",
+  "type": "object",
+  "required": ["schema_version", "approval_id", "project_id", "action", "status", "created_at", "valid_until"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "approval_id": { "type": "string", "pattern": "^apr-[0-9a-f-]+$" },
+    "project_id": { "type": "string" },
+    "action": { "type": "string" },
+    "risk_summary": { "type": "string" },
+    "status": { "enum": ["pending", "approved", "rejected", "consumed"] },
+    "single_use": { "type": "boolean" },
+    "requested_by": { "type": "string" },
+    "decided_by": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "consumed_at": { "type": "string", "format": "date-time" },
+    "valid_until": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

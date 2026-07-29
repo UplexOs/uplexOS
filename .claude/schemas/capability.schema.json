@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uplexos.local/schemas/capability.schema.json",
+  "title": "UplexOS Capability",
+  "type": "object",
+  "required": ["id", "domain", "risk_level", "agent", "depends_on", "outputs"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+$" },
+    "domain": { "type": "string" },
+    "risk_level": { "enum": ["low", "medium", "high", "critical"] },
+    "agent": { "type": "string" },
+    "depends_on": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "requires_approval": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
